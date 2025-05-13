@@ -1,0 +1,339 @@
+/* 产品详情页面样式 */
+
+/* 主容器 */
+.product-detail-container {
+    display: flex;
+    margin-top: 100px; /* 为顶部导航栏留出空间 */
+    min-height: calc(100vh - 170px); /* 减去头部和页脚的高度 */
+    position: relative;
+}
+
+/* 图片区域 - 左侧 */
+.product-images {
+    flex: 0 0 50%; /* 左侧占60%宽度，减少宽度给右侧更多空间 */
+    display: flex;
+    flex-direction: column;
+    gap: 40px; /* 图片之间的间距 */
+    padding: 0 40px 60px 40px; /* 内边距 */
+}
+
+/* 单个产品图片 */
+.product-image {
+    width: 100%;
+    height: auto;
+    max-height: 90vh; /* 限制图片最大高度 */
+    object-fit: contain; /* 保持图片比例 */
+    display: block;
+}
+
+/* 信息区域 - 右侧 */
+.product-info-sticky {
+    flex: 0 0 40%; /* 右侧占40%宽度，增加宽度 */
+    position: sticky; /* 使用sticky定位 */
+    top: 120px; /* 距离顶部距离，略大于导航栏高度 */
+    align-self: flex-start; /* 在容器顶部对齐 */
+    height: calc(100vh - 120px); /* 高度限制在视窗内 */
+    overflow-y: auto; /* 内容过多时可滚动 */
+}
+
+/* 信息内容 */
+.product-info-content {
+    padding: 0 40px 40px 20px; /* 调整内边距，左侧减少一些 */
+    max-width: 500px; /* 设置最大宽度，防止内容过宽 */
+}
+
+/* 产品标题 */
+.product-info-content .product-title {
+    font-family: var(--font-heading);
+    font-size: 2em;
+    font-weight: 400;
+    color: var(--brand-black);
+    margin-bottom: 10px;
+}
+
+/* 时期信息 */
+.product-info-content .product-period {
+    font-family: var(--font-body);
+    font-size: 1.1em;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+/* 产品描述区域 */
+.product-description {
+    margin-bottom: 30px;
+    line-height: 1.7;
+}
+
+.product-description p {
+    margin-bottom: 15px;
+    font-size: 0.95em; /* 略微减小字体大小 */
+}
+
+/* 产品详细信息 */
+.product-details {
+    margin-bottom: 30px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    padding-top: 20px;
+}
+
+.detail-item {
+    display: flex;
+    margin-bottom: 10px;
+    flex-wrap: wrap; /* 允许在必要时换行 */
+}
+
+.detail-label {
+    flex: 0 0 120px; /* 增加标签宽度，方便英文展示 */
+    font-weight: 500;
+}
+
+.detail-value {
+    flex: 1;
+    color: #333;
+    font-size: 0.95em; /* 略微减小字体大小 */
+    min-width: 180px; /* 确保值有足够的宽度 */
+}
+
+/* 操作按钮 */
+.product-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 40px;
+    flex-wrap: wrap; /* 允许按钮在必要时换行 */
+}
+
+.action-button {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: var(--brand-green);
+    color: white;
+    border: none;
+    text-decoration: none;
+    font-size: 0.95em;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.action-button:hover {
+    background-color: #606018; /* 稍暗的绿色 */
+    color: white;
+}
+
+.action-button.secondary {
+    background-color: transparent;
+    border: 1px solid var(--brand-black);
+    color: var(--brand-black);
+}
+
+.action-button.secondary:hover {
+    background-color: var(--brand-black);
+    color: white;
+}
+
+/* 相关产品区域 - "You may also like" */
+.related-products {
+    max-width: 85%;
+    margin: 0 auto 60px;
+    padding-top: 60px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1); /* 浅灰色细分隔线 */
+}
+
+.related-title {
+    font-family: var(--font-heading);
+    font-size: 1.8em;
+    font-weight: 400;
+    color: var(--brand-black);
+    margin-bottom: 40px;
+    text-align: left; /* 修改为左对齐 */
+}
+
+.related-items {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.related-item {
+    transition: transform 0.3s ease;
+}
+
+.related-item:hover {
+    transform: translateY(-8px);
+}
+
+.related-link {
+    display: block;
+    text-decoration: none;
+    color: var(--brand-black);
+}
+
+.related-image {
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+
+.related-img {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.related-link:hover .related-img {
+    transform: scale(1.03);
+}
+
+.related-product-title {
+    font-family: var(--font-heading);
+    font-size: 1.1em;
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+
+.related-period {
+    font-family: var(--font-body);
+    font-size: 0.85em;
+    color: #666;
+}
+
+/* 响应式适配 */
+@media (max-width: 1200px) {
+    /* 在较窄屏幕上调整内容平衡 */
+    .product-images {
+        flex: 0 0 55%;
+    }
+    
+    .product-info-sticky {
+        flex: 0 0 45%;
+    }
+    
+    .detail-label {
+        flex: 0 0 100px;
+    }
+    
+    .related-items {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 1024px) {
+    .product-detail-container {
+        flex-direction: column;
+    }
+    
+    .product-images,
+    .product-info-sticky {
+        flex: 0 0 100%;
+        width: 100%;
+    }
+    
+    .product-info-sticky {
+        position: relative;
+        top: 0;
+        height: auto;
+    }
+    
+    .product-info-content {
+        padding: 40px;
+        max-width: 100%;
+    }
+    
+    .detail-label {
+        flex: 0 0 120px;
+    }
+}
+
+@media (max-width: 768px) {
+    .related-items {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* QR Code Modal 样式 */
+.qr-modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.qr-modal.show {
+    display: block;
+    opacity: 1;
+}
+
+.qr-modal-content {
+    background-color: white;
+    margin: 10% auto;
+    padding: 40px;
+    width: 400px;
+    max-width: 90%;
+    text-align: center;
+    position: relative;
+    border-radius: 4px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-20px);
+    transition: transform 0.3s ease;
+}
+
+.qr-modal.show .qr-modal-content {
+    transform: translateY(0);
+}
+
+.qr-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.qr-close:hover {
+    color: var(--brand-black);
+}
+
+.qr-modal h3 {
+    margin-bottom: 15px;
+    font-family: var(--font-heading);
+    font-size: 1.6em;
+    font-weight: 400;
+}
+
+.qr-modal p {
+    margin-bottom: 25px;
+    font-size: 0.95em;
+    line-height: 1.6;
+    color: #333;
+}
+
+.qr-image {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 25px;
+    padding: 10px;
+    border: 1px solid #eee;
+    background-color: white;
+}
+
+.qr-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.qr-instructions {
+    font-size: 0.85em !important;
+    color: #666 !important;
+} 

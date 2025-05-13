@@ -1,0 +1,1155 @@
+/* Ambelie Main Stylesheet */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap');
+
+:root {
+    --brand-green: #7E7A20;
+    --brand-red: #880913;
+    --brand-cream: #F8EBD2;
+    --brand-black: #231815;
+    --text-light: #f8f8f8; /* Lighter text for dark backgrounds */
+    --background-light: #ffffff;
+    --background-cream-tint: rgba(248, 235, 210, 0.1); /* Subtle cream background */
+
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Lato', sans-serif;
+}
+
+/* Basic Reset (Optional but Recommended) */
+body, h1, h2, h3, p, ul, li, a {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    line-height: 1.7;
+    color: var(--brand-black);
+    background-color: var(--background-light);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    margin-bottom: 0.5em;
+}
+
+a {
+    color: var(--brand-green);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--brand-red);
+}
+
+/* Header Styles */
+.site-header {
+    padding: 30px 50px;
+    display: flex;
+    justify-content: flex-start; /* Logo aligns left */
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    background-color: rgba(255, 255, 255, 0.8); /* 80% opacity */
+    position: fixed; /* Fixed at top */
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1000; /* Ensure it stays on top */
+    box-sizing: border-box;
+}
+
+.logo {
+    flex: 0 0 auto; /* Don't grow or shrink */
+}
+
+.logo img {
+    max-height: 40px;
+    display: block;
+}
+
+/* Navigation Styles */
+.main-navigation {
+    flex: 1; /* Take up remaining space */
+    display: flex;
+    justify-content: center; /* Center the navigation */
+    margin-left: -60px; /* Adjusted offset for better centering with 7 items */
+}
+
+.main-navigation ul {
+    list-style: none;
+    display: flex;
+    gap: 25px; /* Reduced gap to fit more items */
+}
+
+.main-navigation a {
+    text-decoration: none;
+    color: var(--brand-black);
+    font-size: 0.95em; /* Increased font size (was 0.95em) */
+    font-weight: 400; /* Slightly heavier weight for better readability */
+    letter-spacing: 0.5px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid transparent; /* For hover effect */
+    transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+.main-navigation a:hover {
+    color: var(--brand-red);
+    border-bottom-color: var(--brand-red);
+}
+
+/* Dropdown Menu Styling */
+.has-dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 200px;
+    z-index: 1010;
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+    padding: 15px 0;
+    margin-top: 5px;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.has-dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-menu ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: 0;
+}
+
+.dropdown-menu li {
+    width: 100%;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 10px 20px;
+    font-size: 0.85em;
+    border-bottom: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.dropdown-menu a:hover {
+    background-color: rgba(0, 0, 0, 0.03);
+    border-bottom: none;
+}
+
+/* Add padding to main to account for fixed header */
+main {
+    margin-top: 0; /* Removed margin-top to eliminate gap */
+    padding-top: 0; /* Removed padding-top */
+}
+
+/* Hero Section */
+.hero-section {
+    text-align: center;
+    margin-bottom: 60px; /* Increased spacing */
+    position: relative; /* Needed for potential absolute positioning of text */
+    margin-top: 100px; /* Match the header height to avoid content being hidden */
+}
+
+.hero-visual {
+    height: 75vh; /* Adjust height as desired */
+    background-image: url('../assets/images/placeholder-hero.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-color: var(--brand-cream); /* Fallback color */
+}
+
+.hero-text {
+    padding: 0; /* Remove padding */
+    background-color: transparent; /* Ensure no background */
+    /* height: 0; */ /* Let's see if padding:0 is enough */
+    /* overflow: hidden; */
+}
+
+.hero-text h1 { /* This style might be redundant now or moved */
+    font-size: 2.8em; /* Larger heading */
+    color: var(--brand-black);
+    margin-bottom: 0.3em;
+}
+
+.hero-text p a {
+    display: inline-block;
+    padding: 10px 25px;
+    border: 1px solid var(--brand-black);
+    color: var(--brand-black);
+    text-transform: uppercase;
+    font-size: 0.9em;
+    letter-spacing: 1px;
+    margin-top: 15px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.hero-text p a:hover {
+    background-color: var(--brand-black);
+    color: var(--background-light);
+    border-color: var(--brand-black);
+}
+
+.site-footer {
+    padding: 50px; /* Increased padding */
+    text-align: center;
+    border-top: 1px solid rgba(0, 0, 0, 0.08); /* Subtle border */
+    background-color: var(--background-light);
+    color: var(--brand-black); 
+    font-size: 0.85em;
+    line-height: 1.8;
+}
+
+.footer-content p {
+    margin-bottom: 15px;
+}
+
+.footer-navigation ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 25px; /* Increased gap */
+}
+
+.footer-navigation a {
+    text-decoration: none;
+    color: var(--brand-black);
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.footer-navigation a:hover {
+    opacity: 1;
+    color: var(--brand-red); /* Keep consistent hover */
+}
+
+/* General Section Heading */
+.section-heading {
+    text-align: center;
+    font-family: var(--font-heading);
+    font-size: 2.2em;
+    color: var(--brand-black);
+    margin-bottom: 40px; /* Space before the content that follows */
+}
+
+/* Specific title for featured items if needed, can inherit from .section-heading */
+.featured-items-title {
+    /* margin-top is effectively handled by .hero-section margin-bottom */
+}
+
+/* Featured Collections Section */
+.featured-collections {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns */
+    gap: 20px; /* Further adjust gap for more items */
+    padding: 0 40px 60px 40px; /* Top padding removed, others adjusted/kept */
+    max-width: 1400px; /* Max width for larger screens */
+    margin: 0 auto; /* Center the section */
+}
+
+.collection-item {
+    text-align: center;
+}
+
+.collection-link {
+    display: block;
+    text-decoration: none;
+    color: var(--brand-black);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.collection-link:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    color: var(--brand-red); /* Title color change on hover */
+}
+
+.collection-visual {
+    height: 400px; /* Default fixed height for placeholders */
+    position: relative; /* 添加定位以支持叠加元素 */
+    margin-bottom: 15px;
+    overflow: hidden; /* 确保内容不溢出 */
+    /* 移除背景图片过渡动画 */
+    /* transition: background-image 0.4s ease-in-out; */
+    background-color: #f0f0f0; /* Default fallback for items without specific images yet */
+}
+
+/* 添加两个伪元素来实现图片切换 */
+.collection-visual::before,
+.collection-visual::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    transition: opacity 0.4s ease-in-out; /* 使用透明度进行过渡 */
+}
+
+.collection-visual::before {
+    opacity: 1; /* 默认显示第一张图片 */
+}
+
+.collection-visual::after {
+    opacity: 0; /* 默认隐藏第二张图片 */
+}
+
+/* Dividers */
+.dividers-item .collection-visual {
+    height: 0;
+    padding-bottom: 133.3333%;
+}
+.dividers-item .collection-visual::before {
+    background-image: url('../assets/images/Dividers-1.jpg');
+}
+.dividers-item .collection-visual::after {
+    background-image: url('../assets/images/Dividers-2.jpg');
+}
+.dividers-item .collection-link:hover .collection-visual::before {
+    opacity: 0;
+}
+.dividers-item .collection-link:hover .collection-visual::after {
+    opacity: 1;
+}
+
+/* Chairs */
+.chairs-item .collection-visual {
+    height: 0;
+    padding-bottom: 133.3333%;
+}
+.chairs-item .collection-visual::before {
+    background-image: url('../assets/images/Chairs-1.jpg');
+}
+.chairs-item .collection-visual::after {
+    background-image: url('../assets/images/Chairs-2.jpg');
+}
+.chairs-item .collection-link:hover .collection-visual::before {
+    opacity: 0;
+}
+.chairs-item .collection-link:hover .collection-visual::after {
+    opacity: 1;
+}
+
+/* Tables */
+.tables-item .collection-visual {
+    height: 0;
+    padding-bottom: 133.3333%;
+}
+.tables-item .collection-visual::before {
+    background-image: url('../assets/images/Tables-1.jpg');
+}
+.tables-item .collection-visual::after {
+    background-image: url('../assets/images/Tables-2.jpg');
+}
+.tables-item .collection-link:hover .collection-visual::before {
+    opacity: 0;
+}
+.tables-item .collection-link:hover .collection-visual::after {
+    opacity: 1;
+}
+
+/* Coffee Tables */
+.coffee-tables-item .collection-visual {
+    height: 0;
+    padding-bottom: 133.3333%;
+}
+.coffee-tables-item .collection-visual::before {
+    background-image: url('../assets/images/Coffee Tables-1.jpg');
+}
+.coffee-tables-item .collection-visual::after {
+    background-image: url('../assets/images/Coffee Tables-2.jpg');
+}
+.coffee-tables-item .collection-link:hover .collection-visual::before {
+    opacity: 0;
+}
+.coffee-tables-item .collection-link:hover .collection-visual::after {
+    opacity: 1;
+}
+
+/* Sofas */
+.sofas-item .collection-visual {
+    height: 0;
+    padding-bottom: 133.3333%;
+}
+.sofas-item .collection-visual::before {
+    background-image: url('../assets/images/sofas-1.jpg'); /* Note lowercase 's' */
+}
+.sofas-item .collection-visual::after {
+    background-image: url('../assets/images/Sofas-2.jpg');
+}
+.sofas-item .collection-link:hover .collection-visual::before {
+    opacity: 0;
+}
+.sofas-item .collection-link:hover .collection-visual::after {
+    opacity: 1;
+}
+
+/* Cabinets */
+.cabinets-item .collection-visual {
+    height: 0;
+    padding-bottom: 133.3333%;
+}
+.cabinets-item .collection-visual::before {
+    background-image: url('../assets/images/Cabinets-1.jpg');
+}
+.cabinets-item .collection-visual::after {
+    background-image: url('../assets/images/Cabinets-2.jpg');
+}
+.cabinets-item .collection-link:hover .collection-visual::before {
+    opacity: 0;
+}
+.cabinets-item .collection-link:hover .collection-visual::after {
+    opacity: 1;
+}
+
+/* Lighting */
+.lighting-item .collection-visual {
+    height: 0;
+    padding-bottom: 133.3333%;
+}
+.lighting-item .collection-visual::before {
+    background-image: url('../assets/images/Lighting-1.jpg');
+}
+.lighting-item .collection-visual::after {
+    background-image: url('../assets/images/Lighting-2.jpg');
+}
+.lighting-item .collection-link:hover .collection-visual::before {
+    opacity: 0;
+}
+.lighting-item .collection-link:hover .collection-visual::after {
+    opacity: 1;
+}
+
+/* Decorative Objects */
+.decorative-objects-item .collection-visual {
+    height: 0;
+    padding-bottom: 133.3333%;
+}
+.decorative-objects-item .collection-visual::before {
+    background-image: url('../assets/images/Decorative Objects-1.jpg');
+}
+.decorative-objects-item .collection-visual::after {
+    background-image: url('../assets/images/Decorative Objects-2.jpg');
+}
+.decorative-objects-item .collection-link:hover .collection-visual::before {
+    opacity: 0;
+}
+.decorative-objects-item .collection-link:hover .collection-visual::after {
+    opacity: 1;
+}
+
+/* Arts */
+.arts-item .collection-visual {
+    height: 0;
+    padding-bottom: 133.3333%;
+}
+.arts-item .collection-visual::before {
+    background-image: url('../assets/images/Arts-1.jpg');
+}
+.arts-item .collection-visual::after {
+    background-image: url('../assets/images/Arts-2.jpg');
+}
+.arts-item .collection-link:hover .collection-visual::before {
+    opacity: 0;
+}
+.arts-item .collection-link:hover .collection-visual::after {
+    opacity: 1;
+}
+
+/* Fortuny */
+.fortuny-item .collection-visual {
+    height: 0;
+    padding-bottom: 133.3333%;
+}
+.fortuny-item .collection-visual::before {
+    background-image: url('../assets/images/Fortuny-1.jpg');
+}
+.fortuny-item .collection-visual::after {
+    background-image: url('../assets/images/Fortuny-2.jpg');
+}
+.fortuny-item .collection-link:hover .collection-visual::before {
+    opacity: 0;
+}
+.fortuny-item .collection-link:hover .collection-visual::after {
+    opacity: 1;
+}
+
+/* Taliesin */
+.taliesin-item .collection-visual {
+    height: 0;
+    padding-bottom: 133.3333%;
+}
+.taliesin-item .collection-visual::before {
+    background-image: url('../assets/images/Taliesin-1.jpg');
+}
+.taliesin-item .collection-visual::after {
+    background-image: url('../assets/images/Taliesin-2.jpg');
+}
+.taliesin-item .collection-link:hover .collection-visual::before {
+    opacity: 0;
+}
+.taliesin-item .collection-link:hover .collection-visual::after {
+    opacity: 1;
+}
+
+/* Others */
+.others-item .collection-visual {
+    height: 0;
+    padding-bottom: 133.3333%;
+}
+.others-item .collection-visual::before {
+    background-image: url('../assets/images/Others-1.jpg');
+}
+.others-item .collection-visual::after {
+    background-image: url('../assets/images/Others--2.jpg'); /* Note double hyphen */
+}
+.others-item .collection-link:hover .collection-visual::before {
+    opacity: 0;
+}
+.others-item .collection-link:hover .collection-visual::after {
+    opacity: 1;
+}
+
+/* Image Preloading */
+.preload-images {
+    background-image: 
+        url('../assets/images/Dividers-2.jpg'),
+        url('../assets/images/Chairs-2.jpg'),
+        url('../assets/images/Tables-2.jpg'),
+        url('../assets/images/Coffee Tables-2.jpg'),
+        url('../assets/images/Sofas-2.jpg'),
+        url('../assets/images/Cabinets-2.jpg'),
+        url('../assets/images/Lighting-2.jpg'),
+        url('../assets/images/Decorative Objects-2.jpg'),
+        url('../assets/images/Arts-2.jpg'),
+        url('../assets/images/Fortuny-2.jpg'),
+        url('../assets/images/Taliesin-2.jpg'),
+        url('../assets/images/Others--2.jpg');
+    /* These images will be fetched by the browser but not displayed here */
+}
+
+.collection-title {
+    font-family: var(--font-heading);
+    font-size: 1.2em; /* Further reduce for more items and portrait */
+    font-weight: 400;
+    margin-top: 10px; /* Adjust margin */
+}
+
+/* Exhibitions Section */
+.exhibitions-section {
+    background-color: var(--background-light); /* 移除绿色背景，改为白色背景 */
+    padding: 60px 0 60px 0; /* 保持原有内边距 */
+    position: relative; /* 添加相对定位，用于伪元素定位 */
+}
+
+/* 使用伪元素创建80%宽度的分隔线 */
+.exhibitions-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%); /* 水平居中 */
+    width: 85%; /* 占屏幕宽度80% */
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.08); /* 淡灰色线条 */
+}
+
+/* 展览区内部容器 - 控制最大宽度和位置 */
+.exhibitions-inner {
+    max-width: 85%; /* 修改为与分隔线相同的宽度 */
+    margin: 0 auto; /* 水平居中 */
+    padding-left: 0; /* 移除左侧内边距 */
+    position: relative; /* 相对定位，使按钮可以相对于此定位 */
+}
+
+/* 展览区标题样式 */
+.exhibitions-title {
+    color: var(--brand-black); /* 改为品牌黑色 */
+    text-align: left; /* 文字左对齐 */
+    font-size: 2em; /* 字体大小 */
+    font-weight: 400; /* 字体粗细 */
+    margin-left: 0; /* 左边距 */
+    margin-bottom: 40px; /* 底部边距，与展览内容分隔 */
+}
+
+/* 展览画廊包装器 - 相对定位容器 */
+.exhibitions-gallery-wrapper {
+    position: relative; /* 相对定位，使按钮可以定位 */
+}
+
+/* 展览画廊 - 水平滚动容器 */
+.exhibitions-gallery {
+    display: flex; /* 弹性布局，使项目水平排列 */
+    gap: 40px; /* 项目之间的间距 */
+    overflow-x: auto; /* 水平方向可滚动 */
+    scroll-behavior: smooth; /* 平滑滚动效果 */
+    padding: 10px 0 20px 0; /* 添加上下内边距，为悬停效果留出空间 */
+    scrollbar-width: none; /* Firefox隐藏滚动条 */
+    margin-top: 10px; /* 顶部外边距，为悬停效果预留空间 */
+}
+/* Chrome/Safari隐藏滚动条 */
+.exhibitions-gallery::-webkit-scrollbar {
+    display: none;
+}
+
+/* 单个展览项目样式 */
+.exhibition-item {
+    background: none; /* 透明背景 */
+    width: 300px; /* 固定宽度 */
+    min-width: 300px; /* 最小宽度，防止压缩 */
+    height: 450px; /* 固定高度 */   
+    display: flex; /* 弹性布局 */
+    flex-direction: column; /* 垂直排列内容 */
+    align-items: flex-start; /* 内容左对齐 */
+    position: relative; /* 相对定位 */
+    overflow: visible; /* 允许内容溢出，以便悬停效果可见 */
+}
+
+/* 展览图片样式 */
+.exhibition-item img {
+    width: 100%; /* 宽度填满容器 */
+    height: 400px; /* 固定高度 */
+    object-fit: cover; /* 覆盖填充，保持比例裁剪 */
+    display: block; /* 块级显示 */
+    border-radius: 0; /* 无圆角 */
+}
+
+/* 展览图片标题/说明文字样式 */
+.exhibition-caption {
+    position: static; /* 静态定位，不浮动 */
+    color: var(--brand-black); /* 改为品牌黑色 */
+    font-size: 1em; /* 字体大小 */
+    font-family: var(--font-body); /* 使用正文字体 */
+    background: none; /* 无背景 */
+    padding: 12px 0 0 0; /* 只有顶部内边距12px */
+    box-sizing: border-box; /* 盒模型计算方式 */
+    text-align: left; /* 文字左对齐 */
+    font-weight: 400; /* 字体粗细 */
+    letter-spacing: 0.02em; /* 字母间距 */
+    text-shadow: none; /* 移除文字阴影效果 */
+    width: 100%; /* 宽度100%，确保文字不会溢出 */
+    overflow: visible; /* 溢出可见，不裁剪文字 */
+    display: block; /* 块级显示 */
+    height: auto; /* 高度自适应内容 */
+    white-space: normal; /* 文字可以正常换行 */
+}
+
+/* 展览区"下一个"按钮样式 */
+.exhibitions-next-btn {
+    position: absolute; /* 绝对定位 */
+    right: 20px; /* 右侧位置 */
+    top: 50%; /* 垂直居中 */
+    transform: translateY(-50%); /* 精确垂直居中 */
+    background: rgba(255,255,255,0.85); /* 半透明白色背景 */
+    border: none; /* 无边框 */
+    border-radius: 50%; /* 圆形按钮 */
+    width: 48px; /* 按钮宽度 */
+    height: 48px; /* 按钮高度 */
+    font-size: 2.2em; /* 字体大小(箭头符号) */
+    color: var(--brand-black); /* 箭头颜色 */
+    cursor: pointer; /* 鼠标指针样式 */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.10); /* 阴影效果 */
+    display: flex; /* 弹性布局 */
+    align-items: center; /* 垂直居中 */
+    justify-content: center; /* 水平居中 */
+    z-index: 2; /* 层级，确保在内容之上 */
+    transition: background 0.2s; /* 背景色过渡效果 */
+}
+/* 按钮悬停效果 */
+.exhibitions-next-btn:hover {
+    background: #fff; /* 悬停时背景变为不透明白色 */
+}
+
+/* 展览链接样式 */
+.exhibition-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    height: 100%;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* 展览链接悬停效果 */
+.exhibition-link:hover {
+    transform: translateY(-8px);
+    opacity: 0.9;
+    position: relative; /* 添加相对定位 */
+    z-index: 5; /* 提高悬停项目的层级 */
+}
+
+.exhibition-link:hover .exhibition-caption {
+    color: var(--brand-red);
+}
+
+/* 展览图片悬停效果 */
+.exhibition-link:hover img {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* About Us Section */
+.about-us-section {
+    background-color: var(--brand-green);
+    padding: 80px 0;
+    color: #fff;
+}
+
+.about-us-inner {
+    max-width: 85%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about-us-title {
+    color: #fff;
+    margin-bottom: 40px;
+    text-align: center;
+    font-weight: 400;
+}
+
+.about-us-content {
+    max-width: 950px;
+    margin: 0 auto;
+    font-family: var(--font-body);
+    line-height: 1.8;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+}
+
+.about-us-content p {
+    margin-bottom: 24px;
+}
+
+.about-us-content p:last-child {
+    margin-bottom: 0;
+}
+
+.about-logo {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.about-logo img {
+    max-width: 260px;
+    height: auto;
+}
+
+/* 产品分类页面样式 */
+.category-header {
+    max-width: 85%;
+    margin: 140px auto 60px;
+    text-align: center;
+}
+
+.category-title {
+    font-family: var(--font-heading);
+    font-size: 2.5em;
+    font-weight: 400;
+    color: var(--brand-black);
+    margin-bottom: 20px;
+}
+
+.category-description {
+    font-family: var(--font-body);
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: var(--brand-black);
+    max-width: 800px;
+    margin: 0 auto;
+    font-weight: 300;
+}
+
+/* 产品网格布局 */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    max-width: 85%;
+    margin: 0 auto 80px;
+}
+
+/* 产品项目样式 */
+.product-item {
+    position: relative;
+}
+
+.product-link {
+    display: block;
+    text-decoration: none;
+    color: var(--brand-black);
+    transition: transform 0.3s ease;
+}
+
+.product-link:hover {
+    transform: translateY(-8px);
+}
+
+.product-image {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.product-image img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.product-link:hover .product-image img {
+    transform: scale(1.03);
+}
+
+.product-info {
+    padding: 5px 0;
+}
+
+.product-title {
+    font-family: var(--font-heading);
+    font-size: 1.2em;
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+
+.product-period {
+    font-family: var(--font-body);
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.product-price {
+    font-family: var(--font-body);
+    font-weight: 500;
+    color: var(--brand-green);
+}
+
+/* 产品图片悬停效果 - 屏风系列 */
+/* 设置初始图片和悬停切换图片 */
+[class*="divider-"] .product-image {
+    position: relative;
+    overflow: hidden;
+}
+
+/* 通用产品图片悬停效果 */
+.product-image img {
+    transition: transform 0.4s ease;
+}
+
+.product-link:hover .product-image img {
+    transform: scale(1.03);
+}
+
+/* 定义各个屏风图片的悬停切换 */
+.product-link[href="../product/divider-001.html"] .product-image img {
+    content: url('../assets/images/1-1.jpg');
+}
+.product-link[href="../product/divider-001.html"]:hover .product-image img {
+    content: url('../assets/images/1-2.jpg');
+}
+
+.product-link[href="../product/divider-002.html"] .product-image img {
+    content: url('../assets/images/2-1.jpg');
+}
+.product-link[href="../product/divider-002.html"]:hover .product-image img {
+    content: url('../assets/images/2-2.jpg');
+}
+
+.product-link[href="../product/divider-003.html"] .product-image img {
+    content: url('../assets/images/3-1.jpg');
+}
+.product-link[href="../product/divider-003.html"]:hover .product-image img {
+    content: url('../assets/images/3-2.jpg');
+}
+
+.product-link[href="../product/divider-004.html"] .product-image img {
+    content: url('../assets/images/4-1.jpg');
+}
+.product-link[href="../product/divider-004.html"]:hover .product-image img {
+    content: url('../assets/images/4-2.jpg');
+}
+
+.product-link[href="../product/divider-005.html"] .product-image img {
+    content: url('../assets/images/5-1.jpg');
+}
+.product-link[href="../product/divider-005.html"]:hover .product-image img {
+    content: url('../assets/images/5-2.jpg');
+}
+
+.product-link[href="../product/divider-006.html"] .product-image img {
+    content: url('../assets/images/6-1.jpg');
+}
+.product-link[href="../product/divider-006.html"]:hover .product-image img {
+    content: url('../assets/images/6-2.jpg');
+}
+
+.product-link[href="../product/divider-007.html"] .product-image img {
+    content: url('../assets/images/7-1.jpg');
+}
+.product-link[href="../product/divider-007.html"]:hover .product-image img {
+    content: url('../assets/images/7-2.jpg');
+}
+
+.product-link[href="../product/divider-008.html"] .product-image img {
+    content: url('../assets/images/8-1.jpg');
+}
+.product-link[href="../product/divider-008.html"]:hover .product-image img {
+    content: url('../assets/images/8-2.jpg');
+}
+
+.product-link[href="../product/divider-009.html"] .product-image img {
+    content: url('../assets/images/9-1.jpg');
+}
+.product-link[href="../product/divider-009.html"]:hover .product-image img {
+    content: url('../assets/images/9-2.jpg');
+}
+
+.product-link[href="../product/divider-010.html"] .product-image img {
+    content: url('../assets/images/10-1.jpg');
+}
+.product-link[href="../product/divider-010.html"]:hover .product-image img {
+    content: url('../assets/images/10-2.jpg');
+}
+
+.product-link[href="../product/divider-011.html"] .product-image img {
+    content: url('../assets/images/11-1.jpg');
+}
+.product-link[href="../product/divider-011.html"]:hover .product-image img {
+    content: url('../assets/images/11-2.jpg');
+}
+
+.product-link[href="../product/divider-012.html"] .product-image img {
+    content: url('../assets/images/12-1.jpg');
+}
+.product-link[href="../product/divider-012.html"]:hover .product-image img {
+    content: url('../assets/images/12-2.jpg');
+}
+
+.product-link[href="../product/divider-013.html"] .product-image img {
+    content: url('../assets/images/13-1.jpg');
+}
+.product-link[href="../product/divider-013.html"]:hover .product-image img {
+    content: url('../assets/images/13-2.jpg');
+}
+
+.product-link[href="../product/divider-014.html"] .product-image img {
+    content: url('../assets/images/14-1.jpg');
+}
+.product-link[href="../product/divider-014.html"]:hover .product-image img {
+    content: url('../assets/images/14-2.jpg');
+}
+
+.product-link[href="../product/divider-015.html"] .product-image img {
+    content: url('../assets/images/15-1.jpg');
+}
+.product-link[href="../product/divider-015.html"]:hover .product-image img {
+    content: url('../assets/images/15-2.jpg');
+}
+
+.product-link[href="../product/divider-016.html"] .product-image img {
+    content: url('../assets/images/16-1.jpg');
+}
+.product-link[href="../product/divider-016.html"]:hover .product-image img {
+    content: url('../assets/images/16-2.jpg');
+}
+
+.product-link[href="../product/divider-017.html"] .product-image img {
+    content: url('../assets/images/17-1.jpg');
+}
+.product-link[href="../product/divider-017.html"]:hover .product-image img {
+    content: url('../assets/images/17-2.jpg');
+}
+
+.product-link[href="../product/divider-018.html"] .product-image img {
+    content: url('../assets/images/18-1.jpg');
+}
+.product-link[href="../product/divider-018.html"]:hover .product-image img {
+    content: url('../assets/images/18-2.jpg');
+}
+
+.product-link[href="../product/divider-019.html"] .product-image img {
+    content: url('../assets/images/19-1.jpg');
+}
+.product-link[href="../product/divider-019.html"]:hover .product-image img {
+    content: url('../assets/images/19-2.jpg');
+}
+
+.product-link[href="../product/divider-020.html"] .product-image img {
+    content: url('../assets/images/20-1.jpg');
+}
+.product-link[href="../product/divider-020.html"]:hover .product-image img {
+    content: url('../assets/images/20-2.jpg');
+}
+
+/* 为新的详情页链接添加图片切换效果 */
+.product-link[href="../product/divider-detail.html"] .product-image img {
+    /* 保持默认的 src 属性指定的图片 */
+    transition: content 0.3s ease-in-out;
+}
+.product-link[href="../product/divider-detail.html"]:hover .product-image img {
+    /* 根据图片的 src 属性确定要显示的悬停图片 */
+}
+
+/* 为特定的详情页链接添加图片切换效果 */
+.product-link[href="../product/divider-detail.html"] .product-image img[src="../assets/images/1-1.jpg"] {
+    content: url('../assets/images/1-1.jpg');
+}
+.product-link[href="../product/divider-detail.html"]:hover .product-image img[src="../assets/images/1-1.jpg"] {
+    content: url('../assets/images/1-2.jpg');
+}
+
+.product-link[href="../product/divider-detail.html"] .product-image img[src="../assets/images/2-1.jpg"] {
+    content: url('../assets/images/2-1.jpg');
+}
+.product-link[href="../product/divider-detail.html"]:hover .product-image img[src="../assets/images/2-1.jpg"] {
+    content: url('../assets/images/2-2.jpg');
+}
+
+.product-link[href="../product/divider-detail.html"] .product-image img[src="../assets/images/3-1.jpg"] {
+    content: url('../assets/images/3-1.jpg');
+}
+.product-link[href="../product/divider-detail.html"]:hover .product-image img[src="../assets/images/3-1.jpg"] {
+    content: url('../assets/images/3-2.jpg');
+}
+
+.product-link[href="../product/divider-detail.html"] .product-image img[src="../assets/images/4-1.jpg"] {
+    content: url('../assets/images/4-1.jpg');
+}
+.product-link[href="../product/divider-detail.html"]:hover .product-image img[src="../assets/images/4-1.jpg"] {
+    content: url('../assets/images/4-2.jpg');
+}
+
+.product-link[href="../product/divider-detail.html"] .product-image img[src="../assets/images/5-1.jpg"] {
+    content: url('../assets/images/5-1.jpg');
+}
+.product-link[href="../product/divider-detail.html"]:hover .product-image img[src="../assets/images/5-1.jpg"] {
+    content: url('../assets/images/5-2.jpg');
+}
+
+.product-link[href="../product/divider-detail.html"] .product-image img[src="../assets/images/6-1.jpg"] {
+    content: url('../assets/images/6-1.jpg');
+}
+.product-link[href="../product/divider-detail.html"]:hover .product-image img[src="../assets/images/6-1.jpg"] {
+    content: url('../assets/images/6-2.jpg');
+}
+
+.product-link[href="../product/divider-detail.html"] .product-image img[src="../assets/images/7-1.jpg"] {
+    content: url('../assets/images/7-1.jpg');
+}
+.product-link[href="../product/divider-detail.html"]:hover .product-image img[src="../assets/images/7-1.jpg"] {
+    content: url('../assets/images/7-2.jpg');
+}
+
+.product-link[href="../product/divider-detail.html"] .product-image img[src="../assets/images/8-1.jpg"] {
+    content: url('../assets/images/8-1.jpg');
+}
+.product-link[href="../product/divider-detail.html"]:hover .product-image img[src="../assets/images/8-1.jpg"] {
+    content: url('../assets/images/8-2.jpg');
+}
+
+.product-link[href="../product/divider-detail.html"] .product-image img[src="../assets/images/9-1.jpg"] {
+    content: url('../assets/images/9-1.jpg');
+}
+.product-link[href="../product/divider-detail.html"]:hover .product-image img[src="../assets/images/9-1.jpg"] {
+    content: url('../assets/images/9-2.jpg');
+}
+
+.product-link[href="../product/divider-detail.html"] .product-image img[src="../assets/images/10-1.jpg"] {
+    content: url('../assets/images/10-1.jpg');
+}
+.product-link[href="../product/divider-detail.html"]:hover .product-image img[src="../assets/images/10-1.jpg"] {
+    content: url('../assets/images/10-2.jpg');
+}
+
+.product-link[href="../product/divider-detail.html"] .product-image img[src="../assets/images/11-1.jpg"] {
+    content: url('../assets/images/11-1.jpg');
+}
+.product-link[href="../product/divider-detail.html"]:hover .product-image img[src="../assets/images/11-1.jpg"] {
+    content: url('../assets/images/11-2.jpg');
+}
+
+.product-link[href="../product/divider-detail.html"] .product-image img[src="../assets/images/12-1.jpg"] {
+    content: url('../assets/images/12-1.jpg');
+}
+.product-link[href="../product/divider-detail.html"]:hover .product-image img[src="../assets/images/12-1.jpg"] {
+    content: url('../assets/images/12-2.jpg');
+}
+
+.product-link[href="../product/divider-detail.html"] .product-image img[src="../assets/images/13-1.jpg"] {
+    content: url('../assets/images/13-1.jpg');
+}
+.product-link[href="../product/divider-detail.html"]:hover .product-image img[src="../assets/images/13-1.jpg"] {
+    content: url('../assets/images/13-2.jpg');
+}
+
+.product-link[href="../product/divider-detail.html"] .product-image img[src="../assets/images/14-1.jpg"] {
+    content: url('../assets/images/14-1.jpg');
+}
+.product-link[href="../product/divider-detail.html"]:hover .product-image img[src="../assets/images/14-1.jpg"] {
+    content: url('../assets/images/14-2.jpg');
+}
+
+.product-link[href="../product/divider-detail.html"] .product-image img[src="../assets/images/15-1.jpg"] {
+    content: url('../assets/images/15-1.jpg');
+}
+.product-link[href="../product/divider-detail.html"]:hover .product-image img[src="../assets/images/15-1.jpg"] {
+    content: url('../assets/images/15-2.jpg');
+}
+
+.product-link[href="../product/divider-detail.html"] .product-image img[src="../assets/images/16-1.jpg"] {
+    content: url('../assets/images/16-1.jpg');
+}
+.product-link[href="../product/divider-detail.html"]:hover .product-image img[src="../assets/images/16-1.jpg"] {
+    content: url('../assets/images/16-2.jpg');
+}
+
+.product-link[href="../product/divider-detail.html"] .product-image img[src="../assets/images/17-1.jpg"] {
+    content: url('../assets/images/17-1.jpg');
+}
+.product-link[href="../product/divider-detail.html"]:hover .product-image img[src="../assets/images/17-1.jpg"] {
+    content: url('../assets/images/17-2.jpg');
+}
+
+.product-link[href="../product/divider-detail.html"] .product-image img[src="../assets/images/18-1.jpg"] {
+    content: url('../assets/images/18-1.jpg');
+}
+.product-link[href="../product/divider-detail.html"]:hover .product-image img[src="../assets/images/18-1.jpg"] {
+    content: url('../assets/images/18-2.jpg');
+}
+
+.product-link[href="../product/divider-detail.html"] .product-image img[src="../assets/images/19-1.jpg"] {
+    content: url('../assets/images/19-1.jpg');
+}
+.product-link[href="../product/divider-detail.html"]:hover .product-image img[src="../assets/images/19-1.jpg"] {
+    content: url('../assets/images/19-2.jpg');
+}
+
+.product-link[href="../product/divider-detail.html"] .product-image img[src="../assets/images/20-1.jpg"] {
+    content: url('../assets/images/20-1.jpg');
+}
+.product-link[href="../product/divider-detail.html"]:hover .product-image img[src="../assets/images/20-1.jpg"] {
+    content: url('../assets/images/20-2.jpg');
+} 
