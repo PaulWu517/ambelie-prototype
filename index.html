@@ -87,9 +87,24 @@
 
     <main>
         <section class="hero-section">
-            <!-- Hero Image/Video Placeholder -->
-            <div class="hero-visual">
-                <!-- Content inside if needed, or leave empty for background image -->
+            <!-- 替换原有的hero-visual为轮播组件 -->
+            <div class="hero-slider">
+                <div class="slide active">
+                    <img src="assets/images/placeholder-hero-1.jpg" alt="Ambelie Hero Image 1">
+                </div>
+                <div class="slide">
+                    <img src="assets/images/placeholder-hero-2.jpg" alt="Ambelie Hero Image 2">
+                </div>
+                <!-- 轮播控制按钮 -->
+                <div class="slider-controls">
+                    <button class="prev-btn" aria-label="Previous slide">&#8249;</button>
+                    <button class="next-btn" aria-label="Next slide">&#8250;</button>
+                </div>
+                <!-- 轮播指示器 -->
+                <div class="slider-indicators">
+                    <span class="indicator active" data-index="0"></span>
+                    <span class="indicator" data-index="1"></span>
+                </div>
             </div>
             <div class="hero-text">
                 <!-- This text block is removed -->
