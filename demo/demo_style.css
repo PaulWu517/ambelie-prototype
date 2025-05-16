@@ -1,0 +1,209 @@
+/* --- Base Reset & Defaults --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Lato', sans-serif; /* 清晰的无衬线字体作为基础 */
+    font-weight: 300;
+    line-height: 1.7;
+    color: #333; /* 深灰色文字，避免纯黑的刺眼 */
+    background-color: #fdfdfd; /* 非常浅的灰白背景，增加柔和感 */
+}
+
+h1, h2, h3, .logo {
+    font-family: 'Playfair Display', serif; /* 优雅的衬线字体用于标题和 Logo */
+    font-weight: 400;
+    color: #1a1a1a; /* 更深的黑色用于标题，增加对比 */
+    margin-bottom: 0.8em;
+}
+
+h1 {
+    font-size: 3rem; /* 较大的 H1 */
+    line-height: 1.2;
+    font-weight: 700; /* H1 可以加粗一些 */
+}
+
+h2 {
+    font-size: 2rem; /* H2 稍小 */
+    text-align: center;
+    margin-bottom: 2em; /* 标题下方留白 */
+}
+
+h3 {
+    font-size: 1.2rem;
+    margin-top: 0.8em; /* 图片和标题间距 */
+    margin-bottom: 0.4em;
+}
+
+p {
+    margin-bottom: 1em;
+}
+
+a {
+    text-decoration: none;
+    color: inherit; /* 链接继承父元素颜色 */
+    transition: opacity 0.3s ease; /* 平滑过渡效果 */
+}
+
+a:hover {
+    opacity: 0.7; /* 悬停时稍微变淡 */
+}
+
+img {
+    max-width: 100%; /* 图片响应式 */
+    height: auto;
+    display: block; /* 移除图片底部的空白 */
+}
+
+.container {
+    max-width: 1200px; /* 内容最大宽度 */
+    margin: 0 auto; /* 页面居中 */
+    padding: 0 40px; /* 左右内边距，制造呼吸空间 */
+}
+
+/* --- Header & Navigation --- */
+.main-header {
+    padding: 30px 0; /* 顶部和底部留白 */
+    background-color: rgba(255, 255, 255, 0.85); /* 轻微透明的白色背景，如果需要叠加在图片上 */
+    /* border-bottom: 1px solid #eee; */ /* 可以取消边框，更极简 */
+    position: sticky; /* 导航栏吸顶（可选） */
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(5px); /* 毛玻璃效果（可选） */
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between; /* Logo 和 Nav 分散对齐 */
+    align-items: center; /* 垂直居中 */
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 1px; /* 轻微字间距 */
+    margin-bottom: 0; /* 重置标题的 margin */
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+}
+
+.main-nav ul li {
+    margin-left: 30px; /* 导航项间距 */
+}
+
+.main-nav a {
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    font-size: 0.9rem;
+    text-transform: uppercase; /* 大写字母 */
+    letter-spacing: 0.5px;
+    color: #444; /* 导航链接颜色 */
+}
+
+/* --- Hero Section --- */
+.hero {
+    height: 75vh; /* 较高的视觉区域 */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1)), url('images/placeholder-hero.jpg'); /* 替换为你的高质量背景图 */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff; /* 白色文字 */
+    padding: 0 20px; /* 防止文字贴边 */
+}
+
+.hero-content h1 {
+    color: #fff;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.4); /* 轻微文字阴影增加可读性 */
+     margin-bottom: 0.4em;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    font-weight: 300;
+    max-width: 600px; /* 限制段落宽度 */
+    margin: 0 auto 1.5em auto;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+}
+
+/* 可选的行动号召按钮样式
+.cta-button {
+    display: inline-block;
+    padding: 10px 25px;
+    border: 1px solid #fff;
+    color: #fff;
+    font-weight: 400;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #fff;
+    color: #333;
+    opacity: 1;
+} */
+
+/* --- Featured Grid Section --- */
+.featured-grid {
+    padding: 80px 0; /* 上下大量留白 */
+}
+
+.grid-container {
+    display: grid;
+    /* 自动适应列数，最小列宽 280px，自动填充 */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 50px; /* 网格间距 */
+}
+
+.grid-item {
+    text-align: left; /* 网格项内文本左对齐 */
+}
+
+.grid-item img {
+    margin-bottom: 1em; /* 图片下方间距 */
+    /* aspect-ratio: 3 / 4; */ /* 可选：固定图片比例 */
+    /* object-fit: cover; */ /* 可选：确保图片填满容器 */
+    border: 1px solid #eee; /* 非常浅的边框增加轮廓感 */
+}
+
+.grid-item h3 {
+     margin-top: 0; /* 重置标题上边距 */
+     margin-bottom: 0.2em;
+}
+.grid-item p {
+    font-size: 0.9rem;
+    color: #666; /* 描述文字颜色稍浅 */
+    margin-bottom: 0;
+}
+
+/* --- Content Section --- */
+.content-section {
+     padding: 40px 0 80px 0; /* 上下留白 */
+     text-align: center;
+}
+
+.philosophy-text {
+    max-width: 700px; /* 限制段落宽度，居中显示更易读 */
+    margin: 0 auto;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #444;
+}
+
+
+/* --- Footer --- */
+.main-footer {
+    padding: 40px 0;
+    background-color: #f0f0f0; /* 页脚可以用稍深的背景 */
+    text-align: center;
+    font-size: 0.85rem;
+    color: #777;
+    margin-top: 60px; /* 与上方内容间距 */
+}
