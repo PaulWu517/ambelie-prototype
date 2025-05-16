@@ -1,92 +1,236 @@
 // Ambelie Main JavaScript File
 
-// 首页轮播功能
-window.addEventListener('DOMContentLoaded', function() {
-    // 获取轮播元素
-    const slides = document.querySelectorAll('.slide');
-    const prevBtn = document.querySelector('.prev-btn');
-    const nextBtn = document.querySelector('.next-btn');
-    const indicators = document.querySelectorAll('.indicator');
+// 导航菜单交互 - Mega Menu版本
+document.addEventListener('DOMContentLoaded', function() {
+    // 导航菜单交互 - Mega Menu版本
+    const menuItems = document.querySelectorAll('.menu-item');
+    const megaMenuContainer = document.querySelector('.mega-menu-container');
+    const megaMenus = document.querySelectorAll('.mega-menu');
+    const header = document.querySelector('.site-header');
+    const logo = document.querySelector('.logo img');
     
-    if (slides.length > 0) {
-        let currentIndex = 0;
-        let slideInterval;
-
-        // 显示指定索引的幻灯片
-        function showSlide(index) {
-            // 确保索引在有效范围内
-            if (index < 0) index = slides.length - 1;
-            if (index >= slides.length) index = 0;
-            
-            // 更新当前索引
-            currentIndex = index;
-            
-            // 更新所有幻灯片状态
-            slides.forEach((slide, i) => {
-                slide.classList.toggle('active', i === currentIndex);
-            });
-            
-            // 更新指示器状态
-            indicators.forEach((indicator, i) => {
-                indicator.classList.toggle('active', i === currentIndex);
-            });
-        }
-
-        // 下一张幻灯片
-        function nextSlide() {
-            showSlide(currentIndex + 1);
-        }
-
-        // 上一张幻灯片
-        function prevSlide() {
-            showSlide(currentIndex - 1);
-        }
-
-        // 启动自动播放
-        function startAutoSlide() {
-            stopAutoSlide(); // 先停止之前的计时器
-            slideInterval = setInterval(nextSlide, 5000); // 每5秒切换一次
-        }
-
-        // 停止自动播放
-        function stopAutoSlide() {
-            if (slideInterval) {
-                clearInterval(slideInterval);
+    // 向下滚动按钮功能
+    const scrollDownBtn = document.querySelector('.scroll-down-btn');
+    if (scrollDownBtn) {
+        scrollDownBtn.addEventListener('click', function() {
+            const featuredSection = document.querySelector('.featured-items-title');
+            if (featuredSection) {
+                featuredSection.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                // 如果找不到特定的部分，就滚动一个屏幕高度
+                window.scrollTo({
+                    top: window.innerHeight,
+                    behavior: 'smooth'
+                });
             }
-        }
-
-        // 设置按钮点击事件
-        if (nextBtn) {
-            nextBtn.addEventListener('click', function() {
-                nextSlide();
-                startAutoSlide(); // 重置自动播放计时器
+        });
+    }
+    
+    // 调整下拉菜单位置
+    const adjustMegaMenuPosition = function() {
+        const headerHeight = header.offsetHeight;
+        megaMenuContainer.style.top = headerHeight + 'px';
+    };
+    
+    // 初始化时调整
+    adjustMegaMenuPosition();
+    
+    // 窗口大小改变时调整
+    window.addEventListener('resize', adjustMegaMenuPosition);
+    
+    // 创建顶部边框线 - 完全移除这个功能
+    const createBorderLine = function() {
+        // 不再创建任何边框线
+    };
+    
+    // 初始化时创建边框线 - 这一行也可以忽略
+    // createBorderLine();
+    
+    // 处理菜单项点击和悬停事件
+    menuItems.forEach(item => {
+        // 获取对应的菜单目标
+        const targetId = item.getAttribute('data-target');
+        
+        // 为所有菜单项添加mouseenter事件
+        item.addEventListener('mouseenter', function() {
+            // 移除所有活动状态
+            menuItems.forEach(mi => mi.classList.remove('active'));
+            megaMenus.forEach(mm => mm.classList.remove('active'));
+            
+            // 如果没有data-target属性，则关闭所有下拉菜单
+            if (!targetId) {
+                megaMenuContainer.classList.remove('active');
+                header.classList.remove('menu-active');
+                return;
+            }
+            
+            // 添加当前项目的活动状态
+            item.classList.add('active');
+            
+            // 激活对应的下拉菜单
+            const targetMenu = document.getElementById(targetId);
+            if (targetMenu) {
+                targetMenu.classList.add('active');
+                megaMenuContainer.classList.add('active');
+                // 添加menu-active类到header，确保导航栏在下拉菜单显示时保持可见
+                header.classList.add('menu-active');
+                // 再次确保菜单位置正确
+                adjustMegaMenuPosition();
+            }
+        });
+    });
+    
+    // 给megaMenuContainer添加mouseenter事件，确保header保持menu-active状态
+    megaMenuContainer.addEventListener('mouseenter', function() {
+        header.classList.add('menu-active');
+    });
+    
+    // 鼠标离开整个头部区域时关闭下拉菜单
+    header.addEventListener('mouseleave', function() {
+        // 延迟执行，以避免闪烁
+        setTimeout(() => {
+            if (!megaMenuContainer.matches(':hover')) {
+                megaMenuContainer.classList.remove('active');
+                menuItems.forEach(mi => mi.classList.remove('active'));
+                megaMenus.forEach(mm => mm.classList.remove('active'));
+                // 移除menu-active类
+                header.classList.remove('menu-active');
+            }
+        }, 100);
+    });
+    
+    // 鼠标离开下拉菜单区域时关闭
+    megaMenuContainer.addEventListener('mouseleave', function() {
+        megaMenuContainer.classList.remove('active');
+        menuItems.forEach(mi => mi.classList.remove('active'));
+        megaMenus.forEach(mm => mm.classList.remove('active'));
+        // 移除menu-active类
+        header.classList.remove('menu-active');
+    });
+    
+    // 鼠标进入主内容区域时关闭下拉菜单
+    const mainContent = document.querySelector('main');
+    if (mainContent) {
+        mainContent.addEventListener('mouseenter', function() {
+            megaMenuContainer.classList.remove('active');
+            menuItems.forEach(mi => mi.classList.remove('active'));
+            megaMenus.forEach(mm => mm.classList.remove('active'));
+            header.classList.remove('menu-active');
+        });
+    }
+    
+    // 自动识别深色背景区域
+    function setupColorDetectors() {
+        // 自动添加颜色探测器到可能的深色背景区域
+        const potentialDarkAreas = [
+            '.hero-section', // 首屏大图区域
+            '.hero-visual',
+            '.about-us-section', // 绿色背景区域
+            '[style*="background-color: var(--brand-green)"]', // 使用品牌绿色的元素
+            '[style*="background-color: var(--brand-red)"]', // 使用品牌红色的元素
+            '[style*="background-color: var(--brand-black)"]', // 使用品牌黑色的元素
+            '[style*="background-color: #7E7A20"]', // 绿色背景
+            '[style*="background-color: #880913"]', // 红色背景
+            '[style*="background-color: #231815"]', // 黑色背景
+            '[class*="dark-bg"]', // 带有dark-bg类名的元素
+            '[class*="dark-background"]', // 带有dark-background类名的元素
+            'img[src*=".jpg"]', // 图片区域可能是深色的
+            'img[src*=".png"]'
+        ];
+        
+        // 查找所有潜在的深色区域
+        const darkAreaSelectors = potentialDarkAreas.join(',');
+        const possibleDarkAreas = document.querySelectorAll(darkAreaSelectors);
+        
+        // 为每个可能的深色区域添加一个探测器元素
+        possibleDarkAreas.forEach((area, index) => {
+            // 为元素添加data-color-detector属性以便识别
+            area.setAttribute('data-color-detector', 'area-' + index);
+        });
+        
+        // 返回找到的所有潜在深色区域
+        return possibleDarkAreas;
+    }
+    
+    // 使用IntersectionObserver监视logo与深色背景区域的交叉
+    function setupLogoColorObserver() {
+        const potentialDarkAreas = setupColorDetectors();
+        
+        // 创建一个用于检测logo位置的元素
+        const logoDetector = document.createElement('div');
+        logoDetector.className = 'logo-position-detector';
+        logoDetector.style.cssText = 'position: fixed; width: 40px; height: 40px; top: 20px; left: 50%; transform: translateX(-50%); z-index: -1; pointer-events: none;';
+        document.body.appendChild(logoDetector);
+        
+        // 创建观察者监视logo探测器与各区域的交叉
+        const observer = new IntersectionObserver((entries) => {
+            if (!header.classList.contains('scrolled')) return;
+            
+            // 检查是否有深色区域与logo探测器相交
+            let isOverDarkArea = false;
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // 这里我们假设所有监视的区域都是深色的
+                    // 在实际应用中，可以根据区域的具体背景颜色来决定
+                    isOverDarkArea = true;
+                }
             });
+            
+            // 根据检测结果更新logo颜色
+            if (isOverDarkArea) {
+                logo.classList.add('logo-white');
+            } else {
+                logo.classList.remove('logo-white');
+            }
+        }, {
+            threshold: [0.1, 0.5], // 当10%和50%交叉时触发
+            rootMargin: '-10px' // 略微缩小检测范围
+        });
+        
+        // 观察所有潜在的深色区域
+        potentialDarkAreas.forEach(area => {
+            observer.observe(area);
+        });
+    }
+    
+    // 滚动效果处理
+    let lastScrollTop = 0;
+    const scrollThreshold = 100; // 滚动多少像素后触发
+    
+    window.addEventListener('scroll', function() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        // 如果向下滚动超过阈值，添加scrolled类
+        if (scrollTop > scrollThreshold) {
+            if (!header.classList.contains('scrolled')) {
+                header.classList.add('scrolled');
+                // 初始化时默认使用黑色logo
+                logo.classList.remove('logo-white');
+            }
+        } else {
+            // 如果回到顶部附近，移除scrolled类
+            header.classList.remove('scrolled');
+            // 恢复原始logo
+            logo.classList.remove('logo-white');
         }
         
-        if (prevBtn) {
-            prevBtn.addEventListener('click', function() {
-                prevSlide();
-                startAutoSlide(); // 重置自动播放计时器
-            });
-        }
-
-        // 设置指示器点击事件
-        indicators.forEach((indicator, index) => {
-            indicator.addEventListener('click', function() {
-                showSlide(index);
-                startAutoSlide(); // 重置自动播放计时器
+        // 更新最后的滚动位置
+        lastScrollTop = scrollTop;
+    });
+    
+    // 初始化logo颜色观察者
+    setupLogoColorObserver();
+    
+    // 展示区域滚动按钮
+    const nextBtn = document.querySelector('.exhibitions-next-btn');
+    if (nextBtn) {
+        nextBtn.addEventListener('click', function() {
+            const gallery = document.querySelector('.exhibitions-gallery');
+            gallery.scrollBy({
+                left: 400,
+                behavior: 'smooth'
             });
         });
-
-        // 鼠标悬停时暂停自动播放
-        const heroSlider = document.querySelector('.hero-slider');
-        if (heroSlider) {
-            heroSlider.addEventListener('mouseenter', stopAutoSlide);
-            heroSlider.addEventListener('mouseleave', startAutoSlide);
-        }
-
-        // 启动初始自动播放
-        startAutoSlide();
     }
 });
 
@@ -113,3 +257,72 @@ window.addEventListener('DOMContentLoaded', function() {
 });
 
 // Future interactive scripts will go here 
+
+// 添加交错动画效果的JavaScript代码 - 在文件末尾添加
+// 使用IntersectionObserver API检测元素进入视口
+document.addEventListener('DOMContentLoaded', function() {
+    // 删除这部分代码，不再页面加载时自动添加动画类
+    // About Us区域的动画将只通过IntersectionObserver在滚动到视野时触发
+
+    // 处理通用的animate-on-scroll元素
+    const animatedElements = document.querySelectorAll(
+        '.animate-on-scroll, ' + 
+        '.slide-from-left, ' + 
+        '.slide-from-right, ' + 
+        '.exhibition-title, ' + 
+        '.exhibition-date, ' + 
+        '.exhibition-description, ' + 
+        '.view-more-link, ' + 
+        '.exhibition-main-image, ' + 
+        '.exhibition-content, ' + 
+        '.about-us-title, ' + 
+        '.about-us-content p, ' +
+        '.about-logo'
+    );
+
+    console.log('Found ' + animatedElements.length + ' animated elements'); // 调试使用
+
+    // 创建观察器实例
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // 元素进入视口，添加动画类
+                // 为About Us区域元素设置小延迟，创造更自然的动画效果
+                const target = entry.target;
+                
+                if (target.classList.contains('delay-100')) {
+                    setTimeout(() => { target.classList.add('animated'); }, 50);
+                } else if (target.classList.contains('delay-200')) {
+                    setTimeout(() => { target.classList.add('animated'); }, 100);
+                } else if (target.classList.contains('delay-300')) {
+                    setTimeout(() => { target.classList.add('animated'); }, 150);
+                } else if (target.classList.contains('delay-400')) {
+                    setTimeout(() => { target.classList.add('animated'); }, 200);
+                } else if (target.classList.contains('delay-500')) {
+                    setTimeout(() => { target.classList.add('animated'); }, 250);
+                } else {
+                    // 对于没有特定延迟类的元素，立即添加动画类
+                    target.classList.add('animated');
+                }
+                
+                console.log('Animated element:', target); // 调试使用
+
+                // 一旦动画触发，不再观察该元素
+                observer.unobserve(target);
+            }
+        });
+    }, {
+        // 配置项：当元素进入视口15%时触发
+        threshold: 0.15,
+        // 根元素的外边距，使元素在真正进入视口前就开始准备动画
+        rootMargin: '0px 0px -100px 0px'
+    });
+
+    // 观察所有动画元素
+    animatedElements.forEach(el => {
+        observer.observe(el);
+    });
+
+    // 确保不会立即触发可见元素的动画，让用户滚动到位置时才显示
+    // 因此这段代码被注释掉，不再使用
+}); 

@@ -48,58 +48,435 @@ a:hover {
 
 /* Header Styles */
 .site-header {
-    padding: 30px 50px;
+    padding: 20px 50px; /* 减少上下内边距 */
     display: flex;
-    justify-content: flex-start; /* Logo aligns left */
+    justify-content: center; /* 居中对齐 */
     align-items: center;
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
     background-color: rgba(255, 255, 255, 0.8); /* 80% opacity */
-    position: fixed; /* Fixed at top */
+    position: fixed; /* 改回fixed以便固定在顶部 */
     top: 0;
     left: 0;
     right: 0;
     width: 100%;
     z-index: 1000; /* Ensure it stays on top */
     box-sizing: border-box;
+    transition: transform 0.3s ease-in-out, height 0.3s ease-in-out;
+}
+
+/* 添加滚动状态下的header样式 */
+.site-header.scrolled {
+    height: 60px; /* 减小高度 */
+    padding: 10px 50px; /* 减小内边距 */
+    background-color: transparent; /* 背景变为透明 */
+    border-bottom: none; /* 移除底部边框 */
+}
+
+/* 鼠标悬停时恢复背景 */
+.site-header.scrolled:hover {
+    background-color: rgba(255, 255, 255, 0.8); /* 恢复原来的半透明背景 */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08); /* 恢复底部边框 */
+}
+
+/* 左侧和右侧导航的过渡效果 */
+.left-navigation, .right-navigation {
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+/* 滚动时隐藏导航部分 */
+.site-header.scrolled .left-navigation,
+.site-header.scrolled .right-navigation {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* 鼠标悬停时显示导航 */
+.site-header.scrolled:hover .left-navigation,
+.site-header.scrolled:hover .right-navigation,
+/* 修复：当下拉菜单显示时保持导航栏可见 */
+.mega-menu-container.active ~ .site-header.scrolled .left-navigation,
+.mega-menu-container.active ~ .site-header.scrolled .right-navigation,
+.site-header.scrolled.menu-active .left-navigation,
+.site-header.scrolled.menu-active .right-navigation {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 添加新规则：确保当下拉菜单活动时页眉背景保持可见 */
+.site-header.scrolled.menu-active,
+.mega-menu-container.active ~ .site-header.scrolled {
+    background-color: rgba(255, 255, 255, 0.8) !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
 }
 
 .logo {
-    flex: 0 0 auto; /* Don't grow or shrink */
+    flex: 0 0 auto; /* 不伸缩 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 60px; /* 增加左右边距 */
+    transition: transform 0.3s ease-in-out;
 }
 
+/* 滚动状态下的logo样式 */
+.site-header.scrolled .logo {
+    background-color: transparent; /* 透明背景 */
+    padding: 0; /* 移除内边距 */
+    box-shadow: none; /* 移除阴影 */
+}
+
+/* 添加logo图片的样式，原本样式 */
 .logo img {
     max-height: 40px;
     display: block;
+    /* 移除之前的mix-blend-mode和filter属性 */
 }
+
+/* 为滚动状态下的logo添加特殊样式 - 默认黑色 */
+.site-header.scrolled .logo img {
+    filter: brightness(0); /* 使logo变为纯黑色 */
+    transition: filter 0.3s ease; /* 添加过渡效果 */
+}
+
+/* 白色logo类，用于JavaScript控制 */
+.logo img.logo-white {
+    filter: brightness(0) invert(1) !important; /* 强制使用白色 */
+}
+
+/* Logo探测器样式 */
+.logo-position-detector {
+    position: fixed;
+    pointer-events: none;
+    opacity: 0;
+    z-index: -1;
+}
+
+/* 当logo经过深色背景时改变颜色 - 使用JavaScript进行控制 */
 
 /* Navigation Styles */
 .main-navigation {
-    flex: 1; /* Take up remaining space */
     display: flex;
-    justify-content: center; /* Center the navigation */
-    margin-left: -60px; /* Adjusted offset for better centering with 7 items */
+    align-items: center;
+}
+
+.left-navigation {
+    flex: 0 0 auto; /* 不伸缩 */
+    justify-content: flex-end; /* 靠右对齐 */
+    margin-right: 0; /* 移除右边距 */
+}
+
+.right-navigation {
+    flex: 0 0 auto; /* 不伸缩 */
+    justify-content: flex-start; /* 靠左对齐 */
+    margin-left: 0; /* 移除左边距 */
 }
 
 .main-navigation ul {
     list-style: none;
     display: flex;
-    gap: 25px; /* Reduced gap to fit more items */
+    gap: 30px; /* 增加菜单项之间的间距 */
 }
 
 .main-navigation a {
     text-decoration: none;
     color: var(--brand-black);
-    font-size: 0.95em; /* Increased font size (was 0.95em) */
-    font-weight: 400; /* Slightly heavier weight for better readability */
+    font-size: 0.95em;
+    font-weight: 400;
     letter-spacing: 0.5px;
     padding-bottom: 5px;
-    border-bottom: 2px solid transparent; /* For hover effect */
-    transition: border-color 0.3s ease, color 0.3s ease;
+    transition: color 0.3s ease;
+    text-transform: uppercase; /* 确保所有导航项都是大写 */
 }
 
-.main-navigation a:hover {
+.main-navigation a:hover, 
+.menu-item.active a {
     color: var(--brand-red);
-    border-bottom-color: var(--brand-red);
+}
+
+/* 活动菜单项的红色下划线 */
+.menu-item.active a {
+    position: relative;
+}
+
+.menu-item.active a::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--brand-red);
+}
+
+/* 添加悬停时的红色下划线 */
+.menu-item a {
+    position: relative;
+}
+
+.menu-item a::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--brand-red);
+    transition: width 0.3s ease;
+}
+
+.menu-item a:hover::after {
+    width: 100%;
+}
+
+/* 全站大型下拉菜单样式 */
+.mega-menu-container {
+    position: fixed; /* 改为fixed以匹配header */
+    top: 80px; /* 调整为header的高度 */
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.8); /* 修改：与页眉保持相同的不透明度 */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    z-index: 999; /* 确保在页眉下方但在内容上方 */
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-10px); /* 初始状态向上偏移 */
+    transition: opacity 0.4s cubic-bezier(0.19, 1, 0.22, 1), 
+                visibility 0.4s cubic-bezier(0.19, 1, 0.22, 1), 
+                transform 0.4s cubic-bezier(0.19, 1, 0.22, 1); /* 使用更平滑的缓动函数 */
+    border-top: none; /* 移除默认边框 */
+    border: none; /* 确保没有任何边框 */
+    margin-top: -1px; /* 关键修复：消除页眉和下拉菜单之间的间隙 */
+    pointer-events: none; /* 隐藏时不接收鼠标事件 */
+}
+
+/* 添加滚动状态下的mega-menu-container位置调整 */
+.site-header.scrolled ~ .mega-menu-container {
+    top: 60px; /* 与滚动后的header高度一致 */
+}
+
+/* 移除边框线样式，完全删除 */
+#menu-border-line {
+    display: none !important; /* 强制隐藏，以防JS仍创建该元素 */
+}
+
+.mega-menu-container.active {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0); /* 显示时回到原位 */
+    pointer-events: auto; /* 显示时接收鼠标事件 */
+}
+
+.mega-menu {
+    display: none;
+    padding: 10px 0 15px; /* 减少顶部内边距到10px */
+    width: 100%; /* 确保宽度占满容器 */
+    opacity: 0; /* 初始状态透明 */
+    transition: opacity 0.4s ease; /* 添加淡入效果 */
+}
+
+.mega-menu.active {
+    display: block;
+    opacity: 1; /* 显示时完全不透明 */
+    animation: fadeIn 0.4s ease forwards; /* 添加淡入动画 */
+}
+
+/* 菜单内容淡入动画 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.mega-menu-content {
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* 保持居中对齐 */
+    align-items: flex-start;
+    gap: 60px; /* 减少水平间隔 */
+    border: none; /* 确保没有边框 */
+    padding: 10px 0; /* 减少内边距 */
+    max-width: 1200px; /* 添加最大宽度 */
+    margin: 0 auto; /* 使内容居中 */
+    padding-left: 50px; /* 添加左内边距，使COLLECTION与ANTIQUE左对齐 */
+}
+
+/* 第一个菜单部分特别样式 - ANTIQUE */
+.mega-menu-content .menu-section:first-child {
+    margin-left: 0; /* 确保第一个菜单部分无左边距 */
+}
+
+.menu-section {
+    flex: 0 0 auto;
+    min-width: 180px;
+    max-width: 250px;
+    margin-right: 0;
+    margin-bottom: 0;
+    text-align: left;
+    border: none !important; /* 强制确保没有边框 */
+    box-shadow: none !important; /* 确保没有阴影 */
+    background: transparent; /* 透明背景 */
+    opacity: 0; /* 初始状态透明 */
+    transform: translateY(15px); /* 初始状态向下偏移 */
+    animation: menuSectionFadeIn 0.5s ease forwards; /* 添加淡入上移动画 */
+}
+
+/* 为每个菜单部分添加不同的动画延迟，创造交错效果 */
+.menu-section:nth-child(1) {
+    animation-delay: 0.05s;
+}
+.menu-section:nth-child(2) {
+    animation-delay: 0.1s;
+}
+.menu-section:nth-child(3) {
+    animation-delay: 0.15s;
+}
+.menu-section:nth-child(4) {
+    animation-delay: 0.2s;
+}
+
+/* 菜单部分的淡入上移动画 */
+@keyframes menuSectionFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.menu-section h2 {
+    font-family: var(--font-body);
+    font-size: 0.9em; /* 减小字号 */
+    font-weight: 400;
+    margin-bottom: 5px;
+    color: var(--brand-black);
+    padding-bottom: 8px;
+    border: none !important; /* 强制确保没有边框 */
+    border-bottom: none !important; /* 强制确保没有底部边框 */
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-align: left;
+    box-shadow: none !important; /* 确保没有阴影 */
+    background: transparent; /* 透明背景 */
+}
+
+.menu-links {
+    list-style: none;
+    padding: 0;
+    margin-top: 0;
+    text-align: left;
+    border: none; /* 确保没有边框 */
+}
+
+.menu-links li {
+    margin-bottom: 8px;
+    line-height: 1.2;
+    border: none; /* 确保没有边框 */
+    opacity: 0; /* 初始状态透明 */
+    transform: translateX(-5px); /* 初始状态向左偏移 */
+    animation: menuItemFadeIn 0.4s ease forwards; /* 添加淡入移动动画 */
+}
+
+/* 为菜单链接项添加不同的动画延迟，创造瀑布效果 */
+.menu-links li:nth-child(1) { animation-delay: 0.15s; }
+.menu-links li:nth-child(2) { animation-delay: 0.2s; }
+.menu-links li:nth-child(3) { animation-delay: 0.25s; }
+.menu-links li:nth-child(4) { animation-delay: 0.3s; }
+.menu-links li:nth-child(5) { animation-delay: 0.35s; }
+.menu-links li:nth-child(6) { animation-delay: 0.4s; }
+
+/* 菜单链接项的淡入移动动画 */
+@keyframes menuItemFadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* 恢复菜单链接样式 */
+.menu-links a {
+    color: var(--brand-black);
+    text-decoration: none;
+    font-size: 0.95em;
+    transition: color 0.3s ease;
+    display: inline-block;
+    border: none; /* 确保没有边框 */
+}
+
+.menu-links a:hover {
+    color: var(--brand-red);
+}
+
+.menu-image {
+    flex: 1;
+    max-width: 300px;
+}
+
+.menu-image h2 {
+    font-family: var(--font-heading);
+    font-size: 1.5em;
+    font-weight: 400;
+    margin-bottom: 20px;
+    color: var(--brand-black);
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.menu-image-container {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.menu-image-container img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.menu-image-caption {
+    font-size: 0.9em;
+    color: var(--brand-black);
+}
+
+/* User Account Styles */
+.user-account {
+    flex: 0 0 auto;
+    margin-left: 20px;
+    position: relative;
+}
+
+.user-button {
+    display: flex;
+    align-items: center;
+}
+
+.user-circle {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: var(--brand-green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 18px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.user-circle:hover {
+    background-color: var(--brand-red);
 }
 
 /* Dropdown Menu Styling */
@@ -122,6 +499,96 @@ a:hover {
     padding: 15px 0;
     margin-top: 5px;
     border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* 全宽下拉菜单样式 */
+.fullwidth-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    width: 100%;
+    padding: 40px 50px;
+    background-color: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    z-index: 1100; /* 确保在其他元素之上 */
+}
+
+/* 下拉菜单内容结构 */
+.dropdown-content {
+    display: flex;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* 下拉菜单列样式 */
+.dropdown-column {
+    flex: 1;
+    padding: 0 20px;
+}
+
+.dropdown-column h3 {
+    font-family: var(--font-heading);
+    font-size: 1.2em;
+    font-weight: 400;
+    margin-bottom: 15px;
+    color: var(--brand-black);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    padding-bottom: 8px;
+}
+
+.dropdown-column ul {
+    display: block;
+    padding-left: 0;
+}
+
+.dropdown-column li {
+    margin-bottom: 8px;
+}
+
+.dropdown-column a {
+    font-size: 0.9em;
+    padding: 5px 0;
+    display: inline-block;
+    border-bottom: none !important;
+}
+
+/* 图片栏样式 */
+.dropdown-image {
+    flex: 1;
+    max-width: 300px;
+}
+
+.dropdown-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.dropdown-image-caption {
+    font-size: 0.85em;
+    margin-top: 8px;
+    text-align: center;
+}
+
+/* 用户账户下拉菜单的特殊样式 */
+.user-account .dropdown-menu.user-dropdown {
+    right: 0 !important;
+    left: auto !important;
+    min-width: 120px !important;
+    width: 72px !important;
+    transform-origin: top right !important;
+}
+
+.user-account .dropdown-menu.user-dropdown ul {
+    list-style-type: none !important;
+}
+
+.user-account .dropdown-menu.user-dropdown li a {
+    text-align: right !important;
+    padding-right: 15px !important;
+    padding-left: 5px !important;
 }
 
 .has-dropdown:hover .dropdown-menu {
@@ -156,141 +623,55 @@ a:hover {
 
 /* Add padding to main to account for fixed header */
 main {
-    margin-top: 0; /* Removed margin-top to eliminate gap */
-    padding-top: 0; /* Removed padding-top */
+    padding-top: 80px; /* 改用padding-top替代margin-top */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 /* Hero Section */
 .hero-section {
     text-align: center;
-    margin-bottom: 60px; /* Increased spacing */
+    margin-bottom: 0px; /* 增加底部间距，与产品展示区分隔 */
     position: relative; /* Needed for potential absolute positioning of text */
-    margin-top: 100px; /* Match the header height to avoid content being hidden */
+    margin-top: 0; /* 移除顶部边距，避免与页眉重叠 */
+    height: 100vh; /* 设置为视口高度的100% */
+    overflow: hidden; /* 防止内容溢出 */
 }
 
-/* 新增：轮播组件样式 */
-.hero-slider {
-    position: relative;
-    height: 75vh; /* 保持与原hero-visual相同高度 */
-    overflow: hidden;
-}
-
-.slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-}
-
-.slide.active {
-    opacity: 1;
-    z-index: 1;
-}
-
-.slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-}
-
-/* 轮播控制按钮 */
-.slider-controls {
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    z-index: 10;
-    display: flex;
-    justify-content: space-between;
-    padding: 0 20px;
-    transform: translateY(-50%);
-}
-
-.prev-btn, .next-btn {
-    background: rgba(255, 255, 255, 0.3);
-    border: none;
-    color: var(--brand-black);
-    font-size: 2rem;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.3s ease;
-}
-
-.prev-btn:hover, .next-btn:hover {
-    background: rgba(255, 255, 255, 0.5);
-}
-
-/* 轮播指示器 */
-.slider-indicators {
-    position: absolute;
-    bottom: 20px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    z-index: 10;
-}
-
-.indicator {
-    width: 12px;
-    height: 12px;
-    background: rgba(255, 255, 255, 0.5);
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-.indicator.active {
-    background: var(--brand-cream);
-}
-
-/* 旧的hero-visual样式可以注释掉或删除
 .hero-visual {
-    height: 75vh;
+    height: 100%; /* 设置为父容器高度的100% */
+    width: 100%; /* 确保宽度100% */
     background-image: url('../assets/images/placeholder-hero.jpg');
     background-size: cover;
     background-position: center center;
-    background-color: var(--brand-cream);
-}
-*/
-
-.hero-text {
-    padding: 0; /* Remove padding */
-    background-color: transparent; /* Ensure no background */
-    /* height: 0; */ /* Let's see if padding:0 is enough */
-    /* overflow: hidden; */
+    background-color: var(--brand-cream); /* Fallback color */
+    position: absolute; /* 绝对定位 */
+    top: 0;
+    left: 0;
 }
 
-.hero-text h1 { /* This style might be redundant now or moved */
-    font-size: 2.8em; /* Larger heading */
-    color: var(--brand-black);
-    margin-bottom: 0.3em;
+/* 添加hero内容类 */
+.hero-content {
+    position: absolute;
+    bottom: 80px; /* 距离底部的距离 */
+    left: 0;
+    width: 100%;
+    color: white; /* 文字颜色 */
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3); /* 文字阴影，提高可读性 */
+    padding: 0 20px;
 }
 
-.hero-text p a {
-    display: inline-block;
-    padding: 10px 25px;
-    border: 1px solid var(--brand-black);
-    color: var(--brand-black);
-    text-transform: uppercase;
-    font-size: 0.9em;
-    letter-spacing: 1px;
-    margin-top: 15px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+.hero-content h1 {
+    font-size: 3.5em;
+    margin-bottom: 20px;
 }
 
-.hero-text p a:hover {
-    background-color: var(--brand-black);
-    color: var(--background-light);
-    border-color: var(--brand-black);
+.hero-content p {
+    font-size: 1.2em;
+    max-width: 600px;
+    margin: 0 auto 30px;
+    line-height: 1.6;
 }
 
 .site-footer {
@@ -333,7 +714,7 @@ main {
     font-family: var(--font-heading);
     font-size: 2.2em;
     color: var(--brand-black);
-    margin-bottom: 40px; /* Space before the content that follows */
+    margin: 40px auto 40px; /* 适当的上下边距，保持良好间距 */
 }
 
 /* Specific title for featured items if needed, can inherit from .section-heading */
@@ -345,60 +726,108 @@ main {
 .featured-collections {
     display: grid;
     grid-template-columns: repeat(4, 1fr); /* 4 columns */
-    gap: 20px; /* Further adjust gap for more items */
-    padding: 0 40px 60px 40px; /* Top padding removed, others adjusted/kept */
-    max-width: 1400px; /* Max width for larger screens */
-    margin: 0 auto; /* Center the section */
+    gap: 5px; /* 减小间距 */
+    padding: 0; /* 移除内边距，让图片与屏幕边缘齐平 */
+    width: 100%; /* 宽度100% */
+    margin: 0 auto; /* 水平居中 */
+    margin-top: 20px; /* 增加顶部边距，与首图区域分隔 */
+    box-sizing: border-box; /* 确保内边距不增加总宽度 */
 }
 
 .collection-item {
     text-align: center;
+    position: relative; /* 添加相对定位 */
 }
 
 .collection-link {
     display: block;
     text-decoration: none;
-    color: var(--brand-black);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: white; /* 改为白色 */
+    transition: transform 0.3s ease;
+    position: relative; /* 添加相对定位 */
+    overflow: hidden; /* 防止内容溢出 */
 }
 
 .collection-link:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-    color: var(--brand-red); /* Title color change on hover */
+    transform: translateY(0); /* 移除上移效果 */
+    box-shadow: none; /* 移除阴影 */
 }
 
 .collection-visual {
-    height: 400px; /* Default fixed height for placeholders */
-    position: relative; /* 添加定位以支持叠加元素 */
-    margin-bottom: 15px;
-    overflow: hidden; /* 确保内容不溢出 */
-    /* 移除背景图片过渡动画 */
-    /* transition: background-image 0.4s ease-in-out; */
-    background-color: #f0f0f0; /* Default fallback for items without specific images yet */
+    height: 0;
+    padding-bottom: 150%; /* 纵横比更高 */
+    position: relative;
+    margin-bottom: 0; /* 移除底部间距 */
+    overflow: hidden;
+    background-color: #f0f0f0;
 }
 
-/* 添加两个伪元素来实现图片切换 */
-.collection-visual::before,
-.collection-visual::after {
-    content: '';
+/* 添加图片包装器样式 */
+.collection-image-wrapper {
+    width: 100%;
+    height: 100%;
     position: absolute;
     top: 0;
     left: 0;
+    overflow: hidden;
+}
+
+/* 添加图片样式，支持变暗效果 */
+.collection-image-wrapper img {
     width: 100%;
     height: 100%;
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    transition: opacity 0.4s ease-in-out; /* 使用透明度进行过渡 */
+    object-fit: cover;
+    object-position: center;
+    transition: filter 0.3s ease, transform 0.3s ease;
 }
 
-.collection-visual::before {
-    opacity: 1; /* 默认显示第一张图片 */
+/* 移除旧的切换效果代码 */
+/* 创建第二张图片用于切换 */
+.collection-image-wrapper::after {
+    display: none; /* 禁用之前的图片切换效果 */
 }
 
-.collection-visual::after {
-    opacity: 0; /* 默认隐藏第二张图片 */
+/* 移除各个类别的切换图片 */
+.dividers-item .collection-image-wrapper::after,
+.chairs-item .collection-image-wrapper::after,
+.tables-item .collection-image-wrapper::after,
+.coffee-tables-item .collection-image-wrapper::after {
+    background-image: none;
+}
+
+.collection-link:hover .collection-image-wrapper::after {
+    opacity: 0;
+}
+
+/* 悬停时图片变暗效果 */
+.collection-link:hover .collection-image-wrapper img {
+    transform: scale(1.05);
+    filter: brightness(0.7); /* 图片变暗效果 */
+    opacity: 1; /* 保持图片可见 */
+}
+
+/* 标题样式 - 居中显示，没有背景 */
+.collection-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-family: var(--font-heading);
+    font-size: 1.3em;
+    font-weight: 400;
+    opacity: 0; /* 默认隐藏 */
+    transition: opacity 0.3s ease;
+    z-index: 2;
+    text-align: center;
+    width: 100%;
+    padding: 10px 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* 添加文字阴影提高可读性 */
+}
+
+/* 悬停时显示标题 */
+.collection-link:hover .collection-title {
+    opacity: 1;
 }
 
 /* Dividers */
@@ -796,8 +1225,11 @@ main {
 /* About Us Section */
 .about-us-section {
     background-color: var(--brand-green);
-    padding: 80px 0;
+    padding: 30px 0 40px; /* 增加内边距，让内容更加舒适 */
     color: #fff;
+    position: relative; /* 添加相对定位 */
+    overflow: visible; /* u4feeu6539u4e3avisibleuff0cu786eu4fddu5185u5bb9u4e0du88abu88c1u526a */
+    margin-top: 0; /* 恢复正常边距 */
 }
 
 .about-us-inner {
@@ -808,9 +1240,10 @@ main {
 
 .about-us-title {
     color: #fff;
-    margin-bottom: 40px;
+    margin-bottom: 30px; /* 增加标题下方的间距 */
     text-align: center;
     font-weight: 400;
+    /* u5220u9664u91cdu590du7684opacityu548ctransformu5c5eu6027 */
 }
 
 .about-us-content {
@@ -820,19 +1253,18 @@ main {
     line-height: 1.8;
     font-weight: 300;
     letter-spacing: 0.02em;
+    /* u5220u9664u91cdu590du7684opacityu548ctransformu5c5eu6027 */
 }
 
 .about-us-content p {
-    margin-bottom: 24px;
-}
-
-.about-us-content p:last-child {
-    margin-bottom: 0;
+    margin-bottom: 20px; /* 增加段落间距，提高可读性 */
+    /* u5220u9664u91cdu590du7684opacityu548ctransformu5c5eu6027 */
 }
 
 .about-logo {
-    margin-top: 40px;
+    margin-top: 40px; /* 增加Logo上方的间距 */
     text-align: center;
+    /* u5220u9664u91cdu590du7684opacityu548ctransformu5c5eu6027 */
 }
 
 .about-logo img {
@@ -1238,4 +1670,390 @@ main {
 }
 .product-link[href="../product/divider-detail.html"]:hover .product-image img[src="../assets/images/20-1.jpg"] {
     content: url('../assets/images/20-2.jpg');
+}
+
+/* 添加向下滚动按钮样式 */
+.scroll-down-btn {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation: bounce 2s infinite;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 24px;
+    backdrop-filter: blur(4px);
+}
+
+.scroll-down-btn:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    40% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+    60% {
+        transform: translateX(-50%) translateY(-5px);
+    }
+}
+
+/* 横版展示模块 */
+.featured-horizontal {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 两列布局 */
+    gap: 5px; /* 保持与上方竖版模块相同的间距 */
+    width: 100%;
+    margin: 5px auto 0; /* 与上方模块保持一致的间距 */
+    box-sizing: border-box;
+}
+
+.horizontal-item {
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+}
+
+.horizontal-link {
+    display: block;
+    text-decoration: none;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.horizontal-visual {
+    height: 0;
+    padding-bottom: 56.25%; /* 16:9比例 */
+    position: relative;
+    overflow: hidden;
+    background-color: #f0f0f0;
+}
+
+.horizontal-image-wrapper {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
+
+.horizontal-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.horizontal-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-family: var(--font-heading);
+    font-size: 1.5em;
+    font-weight: 400;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+    text-align: center;
+    width: 100%;
+    padding: 10px 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.horizontal-link:hover .horizontal-image-wrapper img {
+    transform: scale(1.05);
+    filter: brightness(0.7);
+}
+
+.horizontal-link:hover .horizontal-title {
+    opacity: 1;
+}
+
+/* u4ea4u9519u5f0fu5c55u89c8u533au57df - u65b0u8bbeu8ba1 */
+.exhibitions-asymmetric {
+    width: 100%;
+    max-width: 100%; /* 改为100%，让图片与屏幕左侧对齐 */
+    margin: 100px 0 30px; /* 添加30px的下边距，减少与下方区域的间距 */
+    padding: 0; /* 移除所有内边距 */
+    box-sizing: border-box;
+}
+
+.exhibitions-row {
+    display: flex;
+    margin-bottom: 50px; /* 调整为适中的间距 */
+    height: 480px; /* 调整为适当的高度，避免内容过于拥挤 */
+}
+
+/* u7b2cu4e00u884cu5e03u5c40 - u5de6u5927u56feu53f3u6587u5b57 */
+.exhibitions-row.first-row .exhibition-main-image {
+    flex: 0 0 65%; /* u5927u56feu5360u636e65%u5bbdu5ea6 */
+    margin-right: 40px; /* u4e0eu53f3u4fa7u533au57dfu7684u95f4u8ddd */
+    position: relative;
+    overflow: hidden;
+}
+
+.exhibitions-row.first-row .exhibition-content {
+    flex: 1; /* u53f3u4fa7u533au57dfu5360u636eu5269u4f59u7a7au95f4 */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* u6539u4e3au9876u90e8u5bf9u9f50 */
+    padding-right: 20px; /* u6dfbu52a0u53f3u4fa7u5185u8fb9u8ddd */
+}
+
+.exhibition-text {
+    margin-top: 0; /* u786eu4fddu6587u5b57u533au57dfu4eceu9876u90e8u5f00u59cb */
+}
+
+/* u7b2cu4e8cu884cu5e03u5c40 - u53cdu5411u6392u5217 */
+.exhibitions-row.second-row {
+    flex-direction: row-reverse; /* u53cdu5411u6392u5217 */
+    margin-bottom: 20px; /* 保持适当的底部间距 */
+}
+
+.exhibitions-row.second-row .exhibition-main-image {
+    flex: 0 0 65%; /* u5927u56feu5360u636e65%u5bbdu5ea6 */
+    margin-left: 40px; /* u4e0eu5de6u4fa7u533au57dfu7684u95f4u8ddd */
+    position: relative;
+    overflow: hidden;
+}
+
+.exhibitions-row.second-row .exhibition-content {
+    flex: 1; /* u5de6u4fa7u533au57dfu5360u636eu5269u4f59u7a7au95f4 */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* u6539u4e3au9876u90e8u5bf9u9f50 */
+    padding-left: 20px; /* u6dfbu52a0u5de6u4fa7u5185u8fb9u8ddd */
+}
+
+/* u56feu7247u5bb9u5668u6837u5f0f */
+.exhibition-image-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.exhibition-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.6s ease;
+}
+
+/* u6587u5b57u533au57dfu6837u5f0f */
+.exhibition-title {
+    font-family: var(--font-heading);
+    font-size: 1.8em;
+    font-weight: 400;
+    margin-bottom: 15px;
+    color: var(--brand-black);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1), 
+                transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.exhibition-date {
+    font-family: var(--font-body);
+    font-size: 0.9em;
+    color: #777;
+    margin-bottom: 15px;
+    letter-spacing: 0.5px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1), 
+                transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.exhibition-description {
+    font-family: var(--font-body);
+    line-height: 1.6;
+    margin-bottom: 10px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1), 
+                transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* u5faeu5999u7684u60acu505cu6548u679c */
+.exhibition-image-container:hover img {
+    transform: scale(1.03); /* u8f7bu5faeu653eu5927 */
+}
+
+/* u67e5u770bu66f4u591au6309u94ae */
+.view-more-link {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: 0.9em;
+    color: var(--brand-black);
+    margin-top: 20px;
+    border-bottom: 1px solid var(--brand-black);
+    padding-bottom: 2px;
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1), 
+                transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.view-more-link:hover {
+    color: var(--brand-red);
+    border-color: var(--brand-red);
+}
+
+/* u54cdu5e94u5f0fu8c03u6574 */
+@media (max-width: 1200px) {
+    .exhibitions-row {
+        height: auto;
+    }
+    
+    .exhibitions-row.first-row .exhibition-main-image,
+    .exhibitions-row.second-row .exhibition-main-image {
+        flex: 0 0 55%;
+    }
+}
+
+@media (max-width: 768px) {
+    .exhibitions-row,
+    .exhibitions-row.second-row {
+        flex-direction: column;
+        height: auto;
+        margin-bottom: 60px;
+    }
+    
+    .exhibitions-row.first-row .exhibition-main-image,
+    .exhibitions-row.second-row .exhibition-main-image {
+        flex: none;
+        width: 100%;
+        height: 300px;
+        margin: 0 0 30px 0;
+    }
+    
+    .exhibition-small-image {
+        height: 150px;
+    }
+}
+
+/* 添加动画效果的通用类 */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s cubic-bezier(0.19, 1, 0.22, 1), 
+                transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    will-change: opacity, transform; /* 性能优化 */
+}
+
+.animate-on-scroll.animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 用于错开出现时间的类 - 更短的延迟 */
+.delay-100 { transition-delay: 0.05s; }
+.delay-200 { transition-delay: 0.1s; }
+.delay-300 { transition-delay: 0.15s; }
+.delay-400 { transition-delay: 0.2s; }
+.delay-500 { transition-delay: 0.25s; }
+
+/* 展览区动画修改 */
+.exhibitions-asymmetric {
+    width: 100%;
+    max-width: 100%; /* 改为100%，让图片与屏幕左侧对齐 */
+    margin: 80px 0 40px; /* 调整为适中的间距，避免过于拥挤 */
+    padding: 0; /* 移除所有内边距 */
+    box-sizing: border-box;
+}
+
+/* 特定区域的动画调整 */
+.exhibitions-row .exhibition-main-image,
+.exhibitions-row .exhibition-content,
+.exhibition-title,
+.exhibition-date,
+.exhibition-description,
+.view-more-link {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1), 
+                transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.exhibitions-row .exhibition-main-image.animated,
+.exhibitions-row .exhibition-content.animated,
+.exhibition-title.animated,
+.exhibition-date.animated,
+.exhibition-description.animated,
+.view-more-link.animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 延迟时间设置，创造错落有致的动画效果 - 更短的延迟 */
+.exhibition-title { transition-delay: 0.05s; }
+.exhibition-date { transition-delay: 0.1s; }
+.exhibition-description { transition-delay: 0.15s; }
+.view-more-link { transition-delay: 0.2s; }
+
+/* About Us区域的动画修改 */
+.about-us-title,
+.about-us-content p,
+.about-logo {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1), 
+                transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.about-us-title.animated,
+.about-us-content p.animated,
+.about-logo.animated {
+    opacity: 1 !important; /* u4f7fu7528!importantu786eu4fddu8986u76d6u4efbu4f55u51b2u7a81u7684u6837u5f0f */
+    transform: translateY(0) !important;
+    visibility: visible !important; /* u786eu4fddu5143u7d20u53efu89c1 */
+}
+
+/* About Us区域延迟设置 - 使用更短的延迟 */
+.about-us-title { transition-delay: 0.05s; }
+.about-us-content p:nth-child(1) { transition-delay: 0.1s; }
+.about-us-content p:nth-child(2) { transition-delay: 0.15s; }
+.about-logo { transition-delay: 0.2s; }
+
+/* 添加左右滑入效果 */
+.slide-from-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1), 
+                transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.slide-from-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1), 
+                transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.slide-from-left.animated,
+.slide-from-right.animated {
+    opacity: 1;
+    transform: translateX(0);
 } 
