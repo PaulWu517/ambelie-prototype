@@ -5,281 +5,224 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ambelie - Home</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <header class="site-header">
+        <nav class="main-navigation left-navigation">
+            <ul>
+                <li class="menu-item active" data-target="collection-menu">
+                    <a href="javascript:void(0)">COLLECTION</a>
+                </li>
+                <li class="menu-item">
+                    <a href="exhibitions.html">EXHIBITION</a>
+                </li>
+                <li class="menu-item">
+                    <a href="event.html">EVENT</a>
+                </li>
+            </ul>
+        </nav>
+        
         <div class="logo">
             <a href="/"><img src="assets/vi/Ambelie_VI_Logos.png" alt="Ambelie Logo"></a>
         </div>
-        <nav class="main-navigation">
+        
+        <nav class="main-navigation right-navigation">
             <ul>
-                <li class="has-dropdown">
-                    <a href="asian-antiques.html">ASIAN ANTIQUES</a>
-                    <div class="dropdown-menu">
-                        <ul>
-                            <li><a href="asian-antiques/all.html">ALL</a></li>
-                            <li><a href="asian-antiques/chairs.html">CHAIRS</a></li>
-                            <li><a href="asian-antiques/tables.html">TABLES</a></li>
-                            <li><a href="asian-antiques/coffee-tables.html">COFFEE TABLES</a></li>
-                            <li><a href="asian-antiques/sofas.html">SOFAS</a></li>
-                            <li><a href="asian-antiques/cabinets.html">CABINETS</a></li>
-                            <li><a href="asian-antiques/lighting.html">LIGHTING</a></li>
-                            <li><a href="asian-antiques/others.html">OTHERS</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="has-dropdown">
-                    <a href="western-antiques.html">WESTERN ANTIQUES</a>
-                    <div class="dropdown-menu">
-                        <ul>
-                            <li><a href="western-antiques/all.html">ALL</a></li>
-                            <li><a href="western-antiques/chairs.html">CHAIRS</a></li>
-                            <li><a href="western-antiques/tables.html">TABLES</a></li>
-                            <li><a href="western-antiques/coffee-tables.html">COFFEE TABLES</a></li>
-                            <li><a href="western-antiques/sofas.html">SOFAS</a></li>
-                            <li><a href="western-antiques/cabinets.html">CABINETS</a></li>
-                            <li><a href="western-antiques/lighting.html">LIGHTING</a></li>
-                            <li><a href="western-antiques/others.html">OTHERS</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="has-dropdown">
-                    <a href="apparel.html">APPAREL</a>
-                    <div class="dropdown-menu">
-                        <ul>
-                            <li><a href="apparel/all.html">ALL</a></li>
-                            <li><a href="apparel/robes.html">ROBES</a></li>
-                            <li><a href="apparel/shoulder-capes.html">SHOULDER CAPES</a></li>
-                            <li><a href="apparel/clutches.html">CLUTCHES</a></li>
-                            <li><a href="apparel/scarves.html">SCARVES</a></li>
-                            <li><a href="apparel/fringes.html">FRINGES</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="has-dropdown">
-                    <a href="exhibitions.html">EXHIBITIONS</a>
-                    <div class="dropdown-menu">
-                        <ul>
-                            <li><a href="exhibitions/2025.html">2025</a></li>
-                            <li><a href="exhibitions/2024.html">2024</a></li>
-                            <li><a href="exhibitions/2023.html">2023</a></li>
-                            <li><a href="exhibitions/2022.html">2022</a></li>
-                            <li><a href="exhibitions/2021.html">2021</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="has-dropdown">
+                <li class="menu-item">
                     <a href="services.html">SERVICES</a>
-                    <div class="dropdown-menu">
-                        <ul>
-                            <li><a href="services/reservation.html">Reservation</a></li>
-                            <li><a href="services/design.html">Design</a></li>
-                        </ul>
-                    </div>
                 </li>
-                <li><a href="about.html">ABOUT</a></li>
-                <li><a href="contact.html">CONTACT</a></li>
+                <li class="menu-item">
+                    <a href="about.html">ABOUT</a>
+                </li>
+                <li class="menu-item">
+                    <a href="contact.html">CONTACT</a>
+                </li>
             </ul>
         </nav>
-        <!-- Optional: Search Icon -->
-        <!-- Optional: Cart/Wishlist Icon -->
+        
+        <!-- 暂时注释用户按钮
+        <div class="user-account">
+            <div class="user-button has-dropdown">
+                <a href="#" class="user-icon">
+                    <div class="user-circle">
+                        <span>p</span>
+                    </div>
+                </a>
+                <div class="dropdown-menu user-dropdown">
+                    <ul>
+                        <li><a href="account.html">Account</a></li>
+                        <li><a href="inquiry.html">Inquiry</a></li>
+                        <li><a href="favorites.html">Favorites</a></li>
+                        <li><a href="orders.html">Orders</a></li>
+                        <li><a href="reservations.html">Reservations</a></li>
+                        <li><a href="logout.html">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        -->
     </header>
+
+    <!-- 全站下拉菜单区域 -->
+    <div class="mega-menu-container">
+        <!-- COLLECTION菜单 -->
+        <div class="mega-menu active" id="collection-menu">
+            <div class="mega-menu-content">
+                <div class="menu-section">
+                    <h2>Antique</h2>
+                    <ul class="menu-links">
+                        <li><a href="category/dividers.html">Dividers</a></li>
+                        <li><a href="category/chairs.html">Chairs</a></li>
+                        <li><a href="category/tables.html">Tables</a></li>
+                        <li><a href="category/coffee-tables.html">Coffee tables</a></li>
+                        <li><a href="category/sofas.html">Sofas</a></li>
+                        <li><a href="category/cabinets.html">Cabinets</a></li>
+                    </ul>
+                </div>
+                <div class="menu-section">
+                    <h2>Lighting</h2>
+                    <ul class="menu-links">
+                        <li><a href="category/fortuny-lighting.html">Fortuny</a></li>
+                        <li><a href="category/yamagiwa.html">Yamagiwa</a></li>
+                        <li><a href="category/taliesin.html">Taliesin</a></li>
+                        <li><a href="category/other-lighting.html">Others</a></li>
+                    </ul>
+                </div>
+                <div class="menu-section">
+                    <h2>Fashion</h2>
+                    <ul class="menu-links">
+                        <li><a href="category/fortuny-fashion.html">Fortuny</a></li>
+                        <li><a href="category/tba.html">T.ba</a></li>
+                        <li><a href="category/other-fashion.html">Others</a></li>
+                    </ul>
+                </div>
+                <div class="menu-section">
+                    <h2>Chinoiserie</h2>
+                    <ul class="menu-links">
+                        <li><a href="category/embroidery.html">Embroidery</a></li>
+                        <li><a href="category/screens.html">Screens</a></li>
+                        <li><a href="category/other-chinoiserie.html">Others</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <main>
         <section class="hero-section">
-            <!-- 替换原有的hero-visual为轮播组件 -->
-            <div class="hero-slider">
-                <div class="slide active">
-                    <img src="assets/images/placeholder-hero-1.jpg" alt="Ambelie Hero Image 1">
-                </div>
-                <div class="slide">
-                    <img src="assets/images/placeholder-hero-2.jpg" alt="Ambelie Hero Image 2">
-                </div>
-                <!-- 轮播控制按钮 -->
-                <div class="slider-controls">
-                    <button class="prev-btn" aria-label="Previous slide">&#8249;</button>
-                    <button class="next-btn" aria-label="Next slide">&#8250;</button>
-                </div>
-                <!-- 轮播指示器 -->
-                <div class="slider-indicators">
-                    <span class="indicator active" data-index="0"></span>
-                    <span class="indicator" data-index="1"></span>
-                </div>
-            </div>
-            <div class="hero-text">
-                <!-- This text block is removed -->
+            <!-- Hero Image/Video Placeholder -->
+            <div class="hero-visual">
+                <!-- Content inside if needed, or leave empty for background image -->
             </div>
         </section>
 
-        <h2 class="section-heading featured-items-title">Featured Items</h2>
-
         <section class="featured-collections">
-            <div class="collection-item dividers-item">
-                <a href="category/dividers.html" class="collection-link">
+            <div class="collection-item cabinets-item">
+                <a href="category/cabinets.html" class="collection-link">
                     <div class="collection-visual">
                         <!-- Image via CSS -->
+                        <div class="collection-image-wrapper">
+                            <img src="assets/images/Cabinets-1.jpg" alt="Cabinets">
+                        </div>
+                        <h2 class="collection-title">Cabinets</h2>
                     </div>
-                    <h2 class="collection-title">Dividers</h2>
                 </a>
             </div>
             <div class="collection-item chairs-item">
                 <a href="category/chairs.html" class="collection-link">
                     <div class="collection-visual">
                         <!-- Image via CSS -->
+                        <div class="collection-image-wrapper">
+                            <img src="assets/images/Chairs-1.jpg" alt="Chairs">
+                        </div>
+                        <h2 class="collection-title">Chairs</h2>
                     </div>
-                    <h2 class="collection-title">Chairs</h2>
                 </a>
             </div>
             <div class="collection-item tables-item">
                 <a href="category/tables.html" class="collection-link">
                     <div class="collection-visual">
                         <!-- Image via CSS -->
+                        <div class="collection-image-wrapper">
+                            <img src="assets/images/Tables-1.jpg" alt="Tables">
+                        </div>
+                        <h2 class="collection-title">Tables</h2>
                     </div>
-                    <h2 class="collection-title">Tables</h2>
                 </a>
             </div>
             <div class="collection-item coffee-tables-item">
                 <a href="category/coffee-tables.html" class="collection-link">
                     <div class="collection-visual">
                         <!-- Image via CSS -->
+                        <div class="collection-image-wrapper">
+                            <img src="assets/images/Coffee Tables-1.jpg" alt="Coffee Tables">
+                        </div>
+                        <h2 class="collection-title">Coffee Tables</h2>
                     </div>
-                    <h2 class="collection-title">Coffee Tables</h2>
-                </a>
-            </div>
-            <div class="collection-item sofas-item">
-                <a href="category/sofas.html" class="collection-link">
-                    <div class="collection-visual">
-                        <!-- Image via CSS -->
-                    </div>
-                    <h2 class="collection-title">Sofas</h2>
-                </a>
-            </div>
-            <div class="collection-item cabinets-item">
-                <a href="category/cabinets.html" class="collection-link">
-                    <div class="collection-visual">
-                        <!-- Image via CSS -->
-                    </div>
-                    <h2 class="collection-title">Cabinets</h2>
-                </a>
-            </div>
-            <div class="collection-item lighting-item">
-                <a href="category/lighting.html" class="collection-link">
-                    <div class="collection-visual">
-                        <!-- Image via CSS -->
-                    </div>
-                    <h2 class="collection-title">Lighting</h2>
-                </a>
-            </div>
-            <div class="collection-item decorative-objects-item">
-                <a href="category/decorative-objects.html" class="collection-link">
-                    <div class="collection-visual">
-                        <!-- Image via CSS -->
-                    </div>
-                    <h2 class="collection-title">Decorative Objects</h2>
-                </a>
-            </div>
-            <div class="collection-item arts-item">
-                <a href="category/arts.html" class="collection-link">
-                    <div class="collection-visual">
-                        <!-- Image via CSS -->
-                    </div>
-                    <h2 class="collection-title">Arts</h2>
-                </a>
-            </div>
-            <div class="collection-item fortuny-item">
-                <a href="category/fortuny.html" class="collection-link">
-                    <div class="collection-visual">
-                        <!-- Image via CSS -->
-                    </div>
-                    <h2 class="collection-title">Fortuny</h2>
-                </a>
-            </div>
-            <div class="collection-item taliesin-item">
-                <a href="category/taliesin.html" class="collection-link">
-                    <div class="collection-visual">
-                        <!-- Image via CSS -->
-                    </div>
-                    <h2 class="collection-title">Taliesin</h2>
-                </a>
-            </div>
-            <div class="collection-item others-item">
-                <a href="category/others.html" class="collection-link">
-                    <div class="collection-visual">
-                        <!-- Image via CSS -->
-                    </div>
-                    <h2 class="collection-title">Others</h2>
                 </a>
             </div>
         </section>
 
-        <!-- Exhibitions Section -->
-        <section class="exhibitions-section">
-            <div class="exhibitions-inner">
-                <h2 class="section-heading exhibitions-title">Exhibitions</h2>
-                <div class="exhibitions-gallery-wrapper">
-                    <div class="exhibitions-gallery">
-                        <div class="exhibition-item">
-                            <a href="/exhibitions/1" class="exhibition-link">
-                                <img src="assets/images/Exhibitions-1.jpg" alt="Exhibition 1">
-                                <div class="exhibition-caption">Exhibitions 1</div>
-                            </a>
+        <!-- 横版展示模块 -->
+        <section class="featured-horizontal">
+            <div class="horizontal-item dividers-item">
+                <a href="category/dividers.html" class="horizontal-link">
+                    <div class="horizontal-visual">
+                        <!-- Image via CSS -->
+                        <div class="horizontal-image-wrapper">
+                            <img src="assets/images/Dividers-1.jpg" alt="Dividers">
                         </div>
-                        <div class="exhibition-item">
-                            <a href="/exhibitions/2" class="exhibition-link">
-                                <img src="assets/images/Exhibitions-2.jpg" alt="Exhibition 2">
-                                <div class="exhibition-caption">Exhibitions 2</div>
-                            </a>
-                        </div>
-                        <div class="exhibition-item">
-                            <a href="/exhibitions/3" class="exhibition-link">
-                                <img src="assets/images/Exhibitions-3.jpg" alt="Exhibition 3">
-                                <div class="exhibition-caption">Exhibitions 3</div>
-                            </a>
-                        </div>
-                        <div class="exhibition-item">
-                            <a href="/exhibitions/4" class="exhibition-link">
-                                <img src="assets/images/Exhibitions-4.jpg" alt="Exhibition 4">
-                                <div class="exhibition-caption">Exhibitions 4</div>
-                            </a>
-                        </div>
-                        <div class="exhibition-item">
-                            <a href="/exhibitions/5" class="exhibition-link">
-                                <img src="assets/images/Exhibitions-5.jpg" alt="Exhibition 5">
-                                <div class="exhibition-caption">Exhibitions 5</div>
-                            </a>
-                        </div>
-                        <div class="exhibition-item">
-                            <a href="/exhibitions/6" class="exhibition-link">
-                                <img src="assets/images/Exhibitions-6.jpg" alt="Exhibition 6">
-                                <div class="exhibition-caption">Exhibitions 6</div>
-                            </a>
-                        </div>
-                        <div class="exhibition-item">
-                            <a href="/exhibitions/7" class="exhibition-link">
-                                <img src="assets/images/Exhibitions-7.jpg" alt="Exhibition 7">
-                                <div class="exhibition-caption">Exhibitions 7</div>
-                            </a>
-                        </div>
-                        <div class="exhibition-item">
-                            <a href="/exhibitions/8" class="exhibition-link">
-                                <img src="assets/images/Exhibitions-8.jpg" alt="Exhibition 8">
-                                <div class="exhibition-caption">Exhibitions 8</div>
-                            </a>
-                        </div>
-                        <div class="exhibition-item">
-                            <a href="/exhibitions/9" class="exhibition-link">
-                                <img src="assets/images/Exhibitions-9.jpg" alt="Exhibition 9">
-                                <div class="exhibition-caption">Exhibitions 9</div>
-                            </a>
-                        </div>
-                        <div class="exhibition-item">
-                            <a href="/exhibitions/10" class="exhibition-link">
-                                <img src="assets/images/Exhibitions-10.jpg" alt="Exhibition 10">
-                                <div class="exhibition-caption">Exhibitions 10</div>
-                            </a>
-                        </div>
+                        <h2 class="horizontal-title">Dividers</h2>
                     </div>
-                    <button class="exhibitions-next-btn" aria-label="Next">&#8250;</button>
+                </a>
+            </div>
+            <div class="horizontal-item lighting-item">
+                <a href="category/lighting.html" class="horizontal-link">
+                    <div class="horizontal-visual">
+                        <!-- Image via CSS -->
+                        <div class="horizontal-image-wrapper">
+                            <img src="assets/images/Lighting-1.jpg" alt="Lighting">
+                        </div>
+                        <h2 class="horizontal-title">Lighting</h2>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- 新的交错式展览区域 -->
+        <section class="exhibitions-asymmetric">
+            <!-- 第一行：左大图 + 右侧文字 -->
+            <div class="exhibitions-row first-row">
+                <div class="exhibition-main-image slide-from-left">
+                    <div class="exhibition-image-container">
+                        <img src="assets/images/exhibition-1.jpg" alt="Exhibition: MODERN GLAMOUR - ART DECO Furniture and Tibetan Carpets">
+                    </div>
+                </div>
+                <div class="exhibition-content slide-from-right">
+                    <div class="exhibition-text">
+                        <h2 class="exhibition-title">MODERN GLAMOUR</h2>
+                        <p class="exhibition-date">April 26 - June 9, 2025</p>
+                        <p class="exhibition-description">A joint exhibition of ART DECO furniture and Tibetan handwoven carpets, showcasing the perfect fusion of classic decorative art style furniture and exquisite traditional Tibetan craftsmanship.</p>
+                        <a href="exhibitions/modern-glamour.html" class="view-more-link">View Exhibition</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 第二行：右大图 + 左侧文字 -->
+            <div class="exhibitions-row second-row">
+                <div class="exhibition-main-image slide-from-right">
+                    <div class="exhibition-image-container">
+                        <img src="assets/images/exhibition-2.jpg" alt="Exhibition: CLOUD DREAMS - Ink Calligraphy and Ebony Screen Exhibition">
+                    </div>
+                </div>
+                <div class="exhibition-content slide-from-left">
+                    <div class="exhibition-text">
+                        <h2 class="exhibition-title">CLOUD DREAMS</h2>
+                        <p class="exhibition-date">January 1 - February 28, 2025</p>
+                        <p class="exhibition-description">A special exhibition featuring century-old embroidered ebony screens and contemporary ink calligraphy works, presenting a modern expression of traditional ink art with the rich heritage of Eastern aesthetics.</p>
+                        <a href="exhibitions/cloud-dreams.html" class="view-more-link">View Exhibition</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -287,14 +230,14 @@
         <!-- About Us Section -->
         <section class="about-us-section">
             <div class="about-us-inner">
-                <h2 class="section-heading about-us-title">ABOUT US</h2>
+                <h2 class="section-heading about-us-title animate-on-scroll delay-100">ABOUT US</h2>
                 <div class="about-us-content">
-                    <p>Traveling through Europe, Asia, the Middle East, and North America, moving through more than 500 buying and antique stores, AMBELIE brings beauty across time, place, society, and lifestyle back to Shanghai & Hangzhou.</p>
+                    <p class="animate-on-scroll delay-200">Traveling through Europe, Asia, the Middle East, and North America, moving through more than 500 buying and antique stores, AMBELIE brings beauty across time, place, society, and lifestyle back to Shanghai & Hangzhou.</p>
                     
-                    <p>Under the plain white dome supported by Collins columns, the same classic and timeless mid-century furniture from different cultures build a living place with an implicit aesthetic. 
+                    <p class="animate-on-scroll delay-300">Under the plain white dome supported by Collins columns, the same classic and timeless mid-century furniture from different cultures build a living place with an implicit aesthetic. 
                     Order - the relics of various civilizations, born from the works of other masters, are so harmonious and integrated into the same room, creating a hidden resonance and connection. </p>
                     
-                    <div class="about-logo">
+                    <div class="about-logo animate-on-scroll delay-400">
                         <img src="assets/vi/Ambelie_about_Logos.png" alt="Ambelie Logo">
                     </div>
                 </div>
@@ -310,9 +253,10 @@
             <p>&copy; 2024 Ambelie. All rights reserved.</p>
             <nav class="footer-navigation">
                 <ul>
-                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                    <li><a href="terms-conditions.html">Terms & Conditions</a></li>
-                    <!-- Add social media links here -->
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
                 </ul>
             </nav>
             <!-- Optional: Newsletter Signup -->
