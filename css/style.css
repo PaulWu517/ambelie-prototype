@@ -762,7 +762,7 @@ main {
     background-color: #f0f0f0;
 }
 
-/* 添加图片包装器样式 */
+/* 修改产品图片悬停效果 - 集合样式区域 */
 .collection-image-wrapper {
     width: 100%;
     height: 100%;
@@ -772,38 +772,30 @@ main {
     overflow: hidden;
 }
 
-/* 添加图片样式，支持变暗效果 */
 .collection-image-wrapper img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center;
-    transition: filter 0.3s ease, transform 0.3s ease;
+    transition: all 0.4s ease;
 }
 
-/* 移除旧的切换效果代码 */
-/* 创建第二张图片用于切换 */
-.collection-image-wrapper::after {
-    display: none; /* 禁用之前的图片切换效果 */
-}
-
-/* 移除各个类别的切换图片 */
-.dividers-item .collection-image-wrapper::after,
-.chairs-item .collection-image-wrapper::after,
-.tables-item .collection-image-wrapper::after,
-.coffee-tables-item .collection-image-wrapper::after {
-    background-image: none;
-}
-
-.collection-link:hover .collection-image-wrapper::after {
+/* 添加悬停时图片切换效果 */
+.collection-image-wrapper .hover-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     opacity: 0;
+    object-fit: cover;
+    transition: opacity 0.4s ease, filter 0.4s ease;
+    z-index: 1;
+    filter: brightness(0.7); /* 为切换后的图片添加变暗效果 */
 }
 
-/* 悬停时图片变暗效果 */
-.collection-link:hover .collection-image-wrapper img {
-    transform: scale(1.05);
-    filter: brightness(0.7); /* 图片变暗效果 */
-    opacity: 1; /* 保持图片可见 */
+.collection-link:hover .collection-image-wrapper .hover-image {
+    opacity: 1;
 }
 
 /* 标题样式 - 居中显示，没有背景 */
@@ -825,9 +817,37 @@ main {
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* 添加文字阴影提高可读性 */
 }
 
+/* 悬停时主图变暗效果 */
+.collection-link:hover .collection-image-wrapper img:not(.hover-image) {
+    filter: brightness(0.7);
+}
+
 /* 悬停时显示标题 */
 .collection-link:hover .collection-title {
     opacity: 1;
+}
+
+/* 横向展示模块图片切换效果 */
+.horizontal-image-wrapper .hover-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    object-fit: cover;
+    transition: opacity 0.4s ease, filter 0.4s ease;
+    z-index: 1;
+    filter: brightness(0.7); /* 为切换后的图片添加变暗效果 */
+}
+
+.horizontal-link:hover .horizontal-image-wrapper .hover-image {
+    opacity: 1;
+}
+
+/* 悬停时主图变暗效果 */
+.horizontal-link:hover .horizontal-image-wrapper img:not(.hover-image) {
+    filter: brightness(0.7);
 }
 
 /* Dividers */
