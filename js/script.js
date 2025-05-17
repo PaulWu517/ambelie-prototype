@@ -232,38 +232,12 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
-});
-
-// 展览区块轮播功能
-window.addEventListener('DOMContentLoaded', function() {
-    const nextBtn = document.querySelector('.exhibitions-next-btn');
-    const gallery = document.querySelector('.exhibitions-gallery');
-    if (nextBtn && gallery) {
-        const item = gallery.querySelector('.exhibition-item');
-        const items = gallery.querySelectorAll('.exhibition-item');
-        nextBtn.addEventListener('click', function() {
-            if (item) {
-                const itemWidth = item.offsetWidth + 40; // 图片宽+gap
-                // 判断是否已经到最后一张或更右
-                if (gallery.scrollLeft + gallery.offsetWidth >= gallery.scrollWidth - 1) {
-                    // 平滑地将第一张滚动到视野中
-                    gallery.scrollTo({ left: 0, behavior: 'smooth' });
-                } else {
-                    gallery.scrollBy({ left: itemWidth, behavior: 'smooth' });
-                }
-            }
-        });
-    }
-});
-
-// Future interactive scripts will go here 
-
-// 添加交错动画效果的JavaScript代码 - 在文件末尾添加
-// 使用IntersectionObserver API检测元素进入视口
-document.addEventListener('DOMContentLoaded', function() {
-    // 删除这部分代码，不再页面加载时自动添加动画类
+    
+    // 预加载悬停图片
+    preloadHoverImages();
+    
+    // 使用IntersectionObserver API检测元素进入视口
     // About Us区域的动画将只通过IntersectionObserver在滚动到视野时触发
-
     // 处理通用的animate-on-scroll元素
     const animatedElements = document.querySelectorAll(
         '.animate-on-scroll, ' + 
@@ -322,7 +296,53 @@ document.addEventListener('DOMContentLoaded', function() {
     animatedElements.forEach(el => {
         observer.observe(el);
     });
+});
 
-    // 确保不会立即触发可见元素的动画，让用户滚动到位置时才显示
-    // 因此这段代码被注释掉，不再使用
-}); 
+// 展览区块轮播功能
+window.addEventListener('DOMContentLoaded', function() {
+    const nextBtn = document.querySelector('.exhibitions-next-btn');
+    const gallery = document.querySelector('.exhibitions-gallery');
+    if (nextBtn && gallery) {
+        const item = gallery.querySelector('.exhibition-item');
+        const items = gallery.querySelectorAll('.exhibition-item');
+        nextBtn.addEventListener('click', function() {
+            if (item) {
+                const itemWidth = item.offsetWidth + 40; // 图片宽+gap
+                // 判断是否已经到最后一张或更右
+                if (gallery.scrollLeft + gallery.offsetWidth >= gallery.scrollWidth - 1) {
+                    // 平滑地将第一张滚动到视野中
+                    gallery.scrollTo({ left: 0, behavior: 'smooth' });
+                } else {
+                    gallery.scrollBy({ left: itemWidth, behavior: 'smooth' });
+                }
+            }
+        });
+    }
+});
+
+// 预加载悬停图片
+function preloadHoverImages() {
+    console.log('Preloading hover images...');
+    const hoverImages = document.querySelectorAll('.hover-image');
+    
+    if (hoverImages.length > 0) {
+        console.log(`Found ${hoverImages.length} hover images to preload`);
+        hoverImages.forEach(img => {
+            // 强制浏览器缓存图片
+            const imgSrc = img.getAttribute('src');
+            if (imgSrc) {
+                const preloadLink = document.createElement('link');
+                preloadLink.href = imgSrc;
+                preloadLink.rel = 'preload';
+                preloadLink.as = 'image';
+                document.head.appendChild(preloadLink);
+                
+                // 也可以创建一个预加载图像
+                const preloadImg = new Image();
+                preloadImg.src = imgSrc;
+            }
+        });
+    } else {
+        console.log('No hover images found for preloading');
+    }
+} 
