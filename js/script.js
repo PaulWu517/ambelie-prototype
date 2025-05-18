@@ -236,7 +236,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // 预加载悬停图片
     preloadHoverImages();
     
-    // 使用IntersectionObserver API检测元素进入视口
+// 使用IntersectionObserver API检测元素进入视口
     // About Us区域的动画将只通过IntersectionObserver在滚动到视野时触发
     // 处理通用的animate-on-scroll元素
     const animatedElements = document.querySelectorAll(
@@ -345,4 +345,28 @@ function preloadHoverImages() {
     } else {
         console.log('No hover images found for preloading');
     }
-} 
+}
+
+// 轮播图自动切换功能
+document.addEventListener('DOMContentLoaded', function() {
+    // 获取所有轮播图片
+    const slides = document.querySelectorAll('.hero-slide');
+    if (slides.length === 0) return; // 如果没有找到轮播图片则退出
+    
+    let currentSlide = 0;
+    
+    // 轮播图切换函数
+    function nextSlide() {
+        // 移除当前图片的active类
+        slides[currentSlide].classList.remove('active');
+        
+        // 计算下一张图片的索引
+        currentSlide = (currentSlide + 1) % slides.length;
+        
+        // 给下一张图片添加active类
+        slides[currentSlide].classList.add('active');
+    }
+    
+    // 设置定时器，每8秒切换一次图片
+    setInterval(nextSlide, 8000);
+}); 

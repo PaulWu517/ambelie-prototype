@@ -1,0 +1,39 @@
+/* 二级页面的页眉样式 - 保持与首页一致但禁用下拉隐藏 */
+
+/* 覆盖scrolled状态下的隐藏效果 */
+.subpage-header.site-header.scrolled {
+    height: auto;
+    padding: 20px 50px;
+    background-color: rgba(255, 255, 255, 0.8) !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+
+/* 覆盖导航栏隐藏效果 */
+.subpage-header.site-header.scrolled .left-navigation,
+.subpage-header.site-header.scrolled .right-navigation {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* 覆盖LOGO样式 */
+.subpage-header.site-header.scrolled .logo {
+    background-color: transparent;
+    padding: 0;
+    box-shadow: none;
+}
+
+/* 禁用LOGO图片变色效果 */
+.subpage-header.site-header.scrolled .logo img {
+    filter: none !important;
+    opacity: 1 !important;
+}
+
+/* 确保二级页面的内容不会被页眉遮挡但减少空白 */
+.subpage-content {
+    padding-top: 0px;
+}
+
+/* 修复下拉菜单的定位和显示 */
+.subpage-header .mega-menu-container {
+    top: 80px !important;
+} 

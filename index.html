@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ambelie - Home</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=1.1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -74,9 +74,9 @@
                     <ul class="menu-links">
                         <li><a href="category/dividers.html">Dividers</a></li>
                         <li><a href="category/chairs.html">Chairs</a></li>
-                        <li><a href="category/tables.html">Tables</a></li>
-                        <li><a href="category/coffee-tables.html">Coffee tables</a></li>
                         <li><a href="category/sofas.html">Sofas</a></li>
+                        <li><a href="category/coffee-tables.html">Coffee tables</a></li>
+                        <li><a href="category/tables.html">Tables</a></li>
                         <li><a href="category/cabinets.html">Cabinets</a></li>
                     </ul>
                 </div>
@@ -111,124 +111,201 @@
 
     <main>
         <section class="hero-section">
-            <!-- Hero Image/Video Placeholder -->
-            <div class="hero-visual">
-                <!-- Content inside if needed, or leave empty for background image -->
+            <!-- 轮播图区域 -->
+            <div class="hero-slider">
+                <div class="hero-slide active" style="background-image: url('assets/images/placeholder-hero.jpg')"></div>
+                <div class="hero-slide" style="background-image: url('assets/images/placeholder-hero1.jpg')"></div>
+                <div class="hero-slide" style="background-image: url('assets/images/placeholder-hero2.jpg')"></div>
             </div>
         </section>
 
-        <section class="featured-collections">
-            <div class="collection-item cabinets-item">
-                <a href="category/cabinets.html" class="collection-link">
-                    <div class="collection-visual">
-                        <!-- Image via CSS -->
-                        <div class="collection-image-wrapper">
-                            <img src="assets/images/Cabinets-1.jpg" alt="Cabinets">
-                            <img src="assets/images/Cabinets-2.jpg" alt="Cabinets" class="hover-image">
-                            <h2 class="collection-title">Cabinets</h2>
-                        </div>
-                    </div>
-                </a>
+        <!-- 新品上线区域 - 参考图样式 -->
+        <section class="new-arrivals-section">
+            <div class="new-arrivals-header">
+                <h2 class="section-heading">Shop New Arrivals</h2>
             </div>
-            <div class="collection-item chairs-item">
-                <a href="category/chairs.html" class="collection-link">
-                    <div class="collection-visual">
-                        <!-- Image via CSS -->
-                        <div class="collection-image-wrapper">
-                            <img src="assets/images/Chairs-1.jpg" alt="Chairs">
-                            <img src="assets/images/Chairs-2.jpg" alt="Chairs" class="hover-image">
-                            <h2 class="collection-title">Chairs</h2>
+            <a href="category/dividers.html" class="view-more-link see-more-link">See More</a>
+            <div class="new-arrivals-grid">
+                <div class="product-item">
+                    <a href="product/divider-detail.html" class="product-link">
+                        <div class="product-image">
+                            <img src="assets/images/1-1.jpg" alt="Chinese Antique Wooden Screen">
+                            <img src="assets/images/1-2.jpg" alt="Chinese Antique Wooden Screen" class="hover-image">
                         </div>
-                    </div>
-                </a>
-            </div>
-            <div class="collection-item tables-item">
-                <a href="category/tables.html" class="collection-link">
-                    <div class="collection-visual">
-                        <!-- Image via CSS -->
-                        <div class="collection-image-wrapper">
-                            <img src="assets/images/Tables-1.jpg" alt="Tables">
-                            <img src="assets/images/Tables-2.jpg" alt="Tables" class="hover-image">
-                            <h2 class="collection-title">Tables</h2>
+                        <div class="product-info">
+                            <h2 class="product-title">Chinese Antique Wooden Screen</h2>
+                            <p class="product-period">Qing Dynasty, Late 19th Century</p>
                         </div>
-                    </div>
-                </a>
-            </div>
-            <div class="collection-item coffee-tables-item">
-                <a href="category/coffee-tables.html" class="collection-link">
-                    <div class="collection-visual">
-                        <!-- Image via CSS -->
-                        <div class="collection-image-wrapper">
-                            <img src="assets/images/Coffee Tables-1.jpg" alt="Coffee Tables">
-                            <img src="assets/images/Coffee Tables-2.jpg" alt="Coffee Tables" class="hover-image">
-                            <h2 class="collection-title">Coffee Tables</h2>
+                    </a>
+                </div>
+                <div class="product-item">
+                    <a href="product/divider-detail.html" class="product-link">
+                        <div class="product-image">
+                            <img src="assets/images/2-1.jpg" alt="Carved Rosewood Room Divider">
+                            <img src="assets/images/2-2.jpg" alt="Carved Rosewood Room Divider" class="hover-image">
                         </div>
-                    </div>
-                </a>
-            </div>
-        </section>
-
-        <!-- 横版展示模块 -->
-        <section class="featured-horizontal">
-            <div class="horizontal-item dividers-item">
-                <a href="category/dividers.html" class="horizontal-link">
-                    <div class="horizontal-visual">
-                        <!-- Image via CSS -->
-                        <div class="horizontal-image-wrapper">
-                            <img src="assets/images/Dividers-1.jpg" alt="Dividers">
-                            <img src="assets/images/Dividers-2.jpg" alt="Dividers" class="hover-image">
-                            <h2 class="horizontal-title">Dividers</h2>
+                        <div class="product-info">
+                            <h2 class="product-title">Carved Rosewood Room Divider</h2>
+                            <p class="product-period">Chinese, Early 20th Century</p>
                         </div>
-                    </div>
-                </a>
-            </div>
-            <div class="horizontal-item lighting-item">
-                <a href="category/lighting.html" class="horizontal-link">
-                    <div class="horizontal-visual">
-                        <!-- Image via CSS -->
-                        <div class="horizontal-image-wrapper">
-                            <img src="assets/images/Lighting-1.jpg" alt="Lighting">
-                            <img src="assets/images/Lighting-2.jpg" alt="Lighting" class="hover-image">
-                            <h2 class="horizontal-title">Lighting</h2>
+                    </a>
+                </div>
+                <div class="product-item">
+                    <a href="product/divider-detail.html" class="product-link">
+                        <div class="product-image">
+                            <img src="assets/images/3-1.jpg" alt="Four-Panel Japanese Byobu Screen">
+                            <img src="assets/images/3-2.jpg" alt="Four-Panel Japanese Byobu Screen" class="hover-image">
                         </div>
-                    </div>
-                </a>
+                        <div class="product-info">
+                            <h2 class="product-title">Four-Panel Japanese Byobu Screen</h2>
+                            <p class="product-period">Meiji Period, 1880s</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="product-item">
+                    <a href="product/divider-detail.html" class="product-link">
+                        <div class="product-image">
+                            <img src="assets/images/4-1.jpg" alt="Elm Wood Lattice Screen">
+                            <img src="assets/images/4-2.jpg" alt="Elm Wood Lattice Screen" class="hover-image">
+                        </div>
+                        <div class="product-info">
+                            <h2 class="product-title">Elm Wood Lattice Screen</h2>
+                            <p class="product-period">Chinese, Mid-20th Century</p>
+                        </div>
+                    </a>
+                </div>
             </div>
         </section>
 
-        <!-- 新的交错式展览区域 -->
-        <section class="exhibitions-asymmetric">
-            <!-- 第一行：左大图 + 右侧文字 -->
+        <!-- 全屏展览区 -->
+        <section class="fullscreen-exhibition">
+            <div class="exhibition-overlay">
+                <h2 class="exhibition-slogan">CROSSING THE RIVER OF TIME</h2>
+                <a href="exhibitions.html" class="exhibition-button">Explore More</a>
+            </div>
+        </section>
+
+        <!-- 门店预约区域 -->
+        <section class="exhibitions-asymmetric store-locations">
+            <!-- 第一行：左大图 + 右侧文字 - 上海店 -->
             <div class="exhibitions-row first-row">
-                <div class="exhibition-main-image slide-from-left">
+                <div class="exhibition-main-image">
                     <div class="exhibition-image-container">
-                        <img src="assets/images/Exhibition-1.jpg" alt="Exhibition: MODERN GLAMOUR - ART DECO Furniture and Tibetan Carpets">
+                        <img src="assets/images/Shanghai-Store.jpg" alt="AMBELIE Gallery Shanghai">
                     </div>
                 </div>
-                <div class="exhibition-content slide-from-right">
+                <div class="exhibition-content">
                     <div class="exhibition-text">
-                        <h2 class="exhibition-title">MODERN GLAMOUR</h2>
-                        <p class="exhibition-date">April 26 - June 9, 2025</p>
-                        <p class="exhibition-description">A joint exhibition of ART DECO furniture and Tibetan handwoven carpets, showcasing the perfect fusion of classic decorative art style furniture and exquisite traditional Tibetan craftsmanship.</p>
-                        <a href="exhibitions/modern-glamour.html" class="view-more-link">View Exhibition</a>
+                        <h2 class="exhibition-title">GALLERY IN SHANGHAI</h2>
+                        <p class="store-address">No. 21 Kangping Road, Xuhui District, Shanghai</p>
+                        <p class="exhibition-date">Opening Hours: 10:00 - 20:00</p>
+                        <p class="exhibition-description">AMBELIE has returned to Shanghai, nestled in a serene garden villa at Kangping Road. Our treasured collection has found its roots in this three-story garden house built in 1945, surrounded by swaying shadows and lush greenery.</p>
+                        <a href="reservation.html" class="view-more-link">Visit Store</a>
                     </div>
                 </div>
             </div>
             
-            <!-- 第二行：右大图 + 左侧文字 -->
+            <!-- 第二行：左文右图 - 杭州店 -->
             <div class="exhibitions-row second-row">
-                <div class="exhibition-main-image slide-from-right">
+                <div class="exhibition-main-image">
                     <div class="exhibition-image-container">
-                        <img src="assets/images/Exhibition-2.jpg" alt="Exhibition: CLOUD DREAMS - Ink Calligraphy and Ebony Screen Exhibition">
+                        <img src="assets/images/Hangzhou-Store.jpg" alt="AMBELIE Gallery Hangzhou">
                     </div>
                 </div>
-                <div class="exhibition-content slide-from-left">
+                <div class="exhibition-content">
                     <div class="exhibition-text">
-                        <h2 class="exhibition-title">CLOUD DREAMS</h2>
-                        <p class="exhibition-date">January 1 - February 28, 2025</p>
-                        <p class="exhibition-description">A special exhibition featuring century-old embroidered ebony screens and contemporary ink calligraphy works, presenting a modern expression of traditional ink art with the rich heritage of Eastern aesthetics.</p>
-                        <a href="exhibitions/cloud-dreams.html" class="view-more-link">View Exhibition</a>
+                        <h2 class="exhibition-title">GALLERY IN HANGZHOU</h2>
+                        <p class="store-address">No. 1788 Hongning Road, Xiaoshan District, Hangzhou</p>
+                        <p class="exhibition-date">Opening Hours: 10:00 - 20:00</p>
+                        <p class="exhibition-description">We've brought treasures from around the world to our Hangzhou space. This street once sheltered the renowned artist Mei Lanfang and was home to "Huang Garden." The refined aesthetic exists quietly here, immersed in a sense of history and culture.</p>
+                        <a href="reservation.html" class="view-more-link">Visit Store</a>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 产品分类展示区 -->
+        <section class="category-showcase-section">
+            <div class="section-header">
+                <h2 class="section-heading">Featured Collections</h2>
+            </div>
+            <a href="category/all.html" class="view-more-link see-more-link">View All Categories</a>
+            <div class="category-showcase-grid">
+                <div class="product-item">
+                    <a href="category/cabinets.html" class="product-link">
+                        <div class="product-image">
+                            <img src="assets/images/Cabinets-1.jpg" alt="Cabinets">
+                            <img src="assets/images/Cabinets-2.jpg" alt="Cabinets" class="hover-image">
+                        </div>
+                        <div class="product-info">
+                            <h2 class="product-title">Cabinets</h2>
+                            <p class="product-period">Antique & Modern</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="product-item">
+                    <a href="category/chairs.html" class="product-link">
+                        <div class="product-image">
+                            <img src="assets/images/Chairs-1.jpg" alt="Chairs">
+                            <img src="assets/images/Chairs-2.jpg" alt="Chairs" class="hover-image">
+                        </div>
+                        <div class="product-info">
+                            <h2 class="product-title">Chairs</h2>
+                            <p class="product-period">Antique & Modern</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="product-item">
+                    <a href="category/sofas.html" class="product-link">
+                        <div class="product-image">
+                            <img src="assets/images/Sofa-1.jpg" alt="Sofas">
+                            <img src="assets/images/Sofa-2.jpg" alt="Sofas" class="hover-image">
+                        </div>
+                        <div class="product-info">
+                            <h2 class="product-title">Sofas</h2>
+                            <p class="product-period">Various Styles</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="product-item">
+                    <a href="category/coffee-tables.html" class="product-link">
+                        <div class="product-image">
+                            <img src="assets/images/Coffee Tables-1.jpg" alt="Coffee Tables">
+                            <img src="assets/images/Coffee Tables-2.jpg" alt="Coffee Tables" class="hover-image">
+                        </div>
+                        <div class="product-info">
+                            <h2 class="product-title">Coffee Tables</h2>
+                            <p class="product-period">Various Styles</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- 横版展示区域 -->
+            <div class="featured-categories">
+                <div class="product-item featured-item">
+                    <a href="category/dividers.html" class="product-link">
+                        <div class="product-image wide-image">
+                            <img src="assets/images/Dividers-1.jpg" alt="Dividers">
+                            <img src="assets/images/Dividers-2.jpg" alt="Dividers" class="hover-image">
+                        </div>
+                        <div class="product-info">
+                            <h2 class="product-title">Dividers</h2>
+                            <p class="product-period">Classic Oriental Screens</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="product-item featured-item">
+                    <a href="category/lighting.html" class="product-link">
+                        <div class="product-image wide-image">
+                            <img src="assets/images/Lighting-1.jpg" alt="Lighting">
+                            <img src="assets/images/Lighting-2.jpg" alt="Lighting" class="hover-image">
+                        </div>
+                        <div class="product-info">
+                            <h2 class="product-title">Lighting</h2>
+                            <p class="product-period">Vintage & Modern Design</p>
+                        </div>
+                    </a>
                 </div>
             </div>
         </section>
@@ -255,18 +332,51 @@
     </main>
 
     <footer class="site-footer">
-        <div class="footer-content">
-            <p>&copy; 2024 Ambelie. All rights reserved.</p>
-            <nav class="footer-navigation">
-                <ul>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="terms.html">Terms & Conditions</a></li>
-                    <li><a href="privacy.html">Privacy Policy</a></li>
-                </ul>
-            </nav>
-            <!-- Optional: Newsletter Signup -->
-            <!-- Optional: Contact Info -->
+        <div class="footer-divider"></div>
+        <div class="footer-container">
+            <div class="footer-left">
+                <h2 class="footer-brand">AMBELIE</h2>
+                <div class="footer-address">
+                    <p>NO. 21 KANGPING ROAD</p>
+                    <p>XUHUI DISTRICT, SHANGHAI</p>
+                    <p>+86 21 6473 7734</p>
+                </div>
+                <p class="footer-copyright">© 2024, AMBELIE. ALL RIGHTS RESERVED</p>
+                <p class="footer-terms"><a href="terms.html">TERMS</a> & <a href="privacy.html">PRIVACY</a></p>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-links-group">
+                    <h3>CONTACT</h3>
+                    <ul>
+                        <li><a href="contact.html">CONTACT</a></li>
+                        <li><a href="support.html">SUPPORT</a></li>
+                        <li><a href="careers.html">CAREERS</a></li>
+                        <li><a href="accessibility.html">ACCESSIBILITY</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links-group">
+                    <h3>EXPLORE</h3>
+                    <ul>
+                        <li><a href="category/all.html">COLLECTIONS</a></li>
+                        <li><a href="registry.html">REGISTRY</a></li>
+                        <li><a href="trade.html">TRADE</a></li>
+                        <li><a href="press.html">PRESS</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-right">
+                <div class="newsletter-form">
+                    <input type="email" placeholder="EMAIL">
+                    <button type="submit">SUBMIT</button>
+                </div>
+                <div class="footer-social">
+                    <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
         </div>
     </footer>
 

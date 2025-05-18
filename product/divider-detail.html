@@ -4,75 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ambelie - Antique Divider</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/product-detail.css">
+    <link rel="stylesheet" href="../css/style.css?v=1.1.0">
+    <link rel="stylesheet" href="../css/product-detail.css?v=1.1.9">
+    <link rel="stylesheet" href="../css/subpage-header.css?v=1.0.1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <header class="site-header">
+    <header class="site-header subpage-header">
         <nav class="main-navigation left-navigation">
             <ul>
-                <li class="has-dropdown">
-                    <a href="../asian-antiques.html">COLLECTION</a>
-                    <div class="dropdown-menu fullwidth-dropdown">
-                        <div class="dropdown-content">
-                            <div class="dropdown-column">
-                                <h3>Antique</h3>
-                                <ul>
-                                    <li><a href="../category/dividers.html">Dividers</a></li>
-                                    <li><a href="../category/chairs.html">Chairs</a></li>
-                                    <li><a href="../category/tables.html">Tables</a></li>
-                                    <li><a href="../category/coffee-tables.html">Coffee tables</a></li>
-                                    <li><a href="../category/sofas.html">Sofas</a></li>
-                                    <li><a href="../category/cabinets.html">Cabinets</a></li>
-                                </ul>
-                            </div>
-                            <div class="dropdown-column">
-                                <h3>Lighting</h3>
-                                <ul>
-                                    <li><a href="../category/fortuny-lighting.html">Fortuny</a></li>
-                                    <li><a href="../category/yamagiwa.html">Yamagiwa</a></li>
-                                    <li><a href="../category/taliesin.html">Taliesin</a></li>
-                                    <li><a href="../category/other-lighting.html">Others</a></li>
-                                </ul>
-                            </div>
-                            <div class="dropdown-column">
-                                <h3>Fashion</h3>
-                                <ul>
-                                    <li><a href="../category/fortuny-fashion.html">Fortuny</a></li>
-                                    <li><a href="../category/tba.html">T.ba</a></li>
-                                    <li><a href="../category/other-fashion.html">Others</a></li>
-                                </ul>
-                            </div>
-                            <div class="dropdown-image">
-                                <h3>Chinoiserie</h3>
-                                <img src="../assets/images/Dividers-1.jpg" alt="Chinoiserie">
-                                <div class="dropdown-image-caption">Explore our exquisite Chinoiserie collection</div>
-                            </div>
-                        </div>
-                    </div>
+                <li class="menu-item active" data-target="collection-menu">
+                    <a href="javascript:void(0)">COLLECTION</a>
                 </li>
-                <li class="has-dropdown">
+                <li class="menu-item">
                     <a href="../exhibitions.html">EXHIBITION</a>
-                    <div class="dropdown-menu">
-                        <ul>
-                            <li><a href="../exhibitions/2025.html">2025</a></li>
-                            <li><a href="../exhibitions/2024.html">2024</a></li>
-                            <li><a href="../exhibitions/2023.html">2023</a></li>
-                            <li><a href="../exhibitions/2022.html">2022</a></li>
-                            <li><a href="../exhibitions/2021.html">2021</a></li>
-                        </ul>
-                    </div>
                 </li>
-                <li class="has-dropdown">
+                <li class="menu-item">
                     <a href="../event.html">EVENT</a>
-                    <div class="dropdown-menu">
-                        <ul>
-                            <li><a href="../event/all.html">ALL</a></li>
-                            <li><a href="../event/upcoming.html">UPCOMING</a></li>
-                            <li><a href="../event/past.html">PAST</a></li>
-                        </ul>
-                    </div>
                 </li>
             </ul>
         </nav>
@@ -83,46 +31,137 @@
         
         <nav class="main-navigation right-navigation">
             <ul>
-                <li class="has-dropdown">
+                <li class="menu-item">
                     <a href="../services.html">SERVICES</a>
-                    <div class="dropdown-menu">
-                        <ul>
-                            <li><a href="../services/reservation.html">Reservation</a></li>
-                            <li><a href="../services/design.html">Design</a></li>
-                        </ul>
-                    </div>
                 </li>
-                <li><a href="../about.html">ABOUT</a></li>
-                <li><a href="../contact.html">CONTACT</a></li>
+                <li class="menu-item">
+                    <a href="../about.html">ABOUT</a>
+                </li>
+                <li class="menu-item">
+                    <a href="../contact.html">CONTACT</a>
+                </li>
             </ul>
         </nav>
     </header>
 
-    <main>
-        <div class="product-detail-container">
-            <div class="product-images">
-                <img src="../assets/devider_images/1.jpg" alt="Divider Image 1" class="product-image">
-                <img src="../assets/devider_images/2.jpg" alt="Divider Image 2" class="product-image">
-                <img src="../assets/devider_images/3.jpg" alt="Divider Image 3" class="product-image">
-                <img src="../assets/devider_images/4.jpg" alt="Divider Image 4" class="product-image">
-                <img src="../assets/devider_images/5.jpg" alt="Divider Image 5" class="product-image">
-                <img src="../assets/devider_images/6.jpg" alt="Divider Image 6" class="product-image">
-                <img src="../assets/devider_images/7.jpg" alt="Divider Image 7" class="product-image">
-                <img src="../assets/devider_images/8.jpg" alt="Divider Image 8" class="product-image">
-                <img src="../assets/devider_images/9.jpg" alt="Divider Image 9" class="product-image">
-                <img src="../assets/devider_images/10.jpg" alt="Divider Image 10" class="product-image">
-                <img src="../assets/devider_images/11.jpg" alt="Divider Image 11" class="product-image">
+    <!-- 全站下拉菜单区域 -->
+    <div class="mega-menu-container">
+        <!-- COLLECTION菜单 -->
+        <div class="mega-menu active" id="collection-menu">
+            <div class="mega-menu-content">
+                <div class="menu-section">
+                    <h2>Antique</h2>
+                    <ul class="menu-links">
+                        <li><a href="../category/dividers.html">Dividers</a></li>
+                        <li><a href="../category/chairs.html">Chairs</a></li>
+                        <li><a href="../category/tables.html">Tables</a></li>
+                        <li><a href="../category/coffee-tables.html">Coffee tables</a></li>
+                        <li><a href="../category/sofas.html">Sofas</a></li>
+                        <li><a href="../category/cabinets.html">Cabinets</a></li>
+                    </ul>
+                </div>
+                <div class="menu-section">
+                    <h2>Lighting</h2>
+                    <ul class="menu-links">
+                        <li><a href="../category/fortuny-lighting.html">Fortuny</a></li>
+                        <li><a href="../category/yamagiwa.html">Yamagiwa</a></li>
+                        <li><a href="../category/taliesin.html">Taliesin</a></li>
+                        <li><a href="../category/other-lighting.html">Others</a></li>
+                    </ul>
+                </div>
+                <div class="menu-section">
+                    <h2>Fashion</h2>
+                    <ul class="menu-links">
+                        <li><a href="../category/fortuny-fashion.html">Fortuny</a></li>
+                        <li><a href="../category/tba.html">T.ba</a></li>
+                        <li><a href="../category/other-fashion.html">Others</a></li>
+                    </ul>
+                </div>
+                <div class="menu-section">
+                    <h2>Chinoiserie</h2>
+                    <ul class="menu-links">
+                        <li><a href="../category/embroidery.html">Embroidery</a></li>
+                        <li><a href="../category/screens.html">Screens</a></li>
+                        <li><a href="../category/other-chinoiserie.html">Others</a></li>
+                    </ul>
+                </div>
             </div>
+        </div>
+    </div>
+
+    <main class="subpage-content">
+        <div class="product-detail-container">
+            <!-- 左侧产品大图展示区 -->
+            <div class="product-gallery">
+                <div class="main-image-container">
+                    <button class="gallery-nav prev-button">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="main-image">
+                        <img src="../assets/devider_images/1.jpg" alt="Divider Image 1" id="current-image" class="active">
+                        <img src="../assets/devider_images/2.jpg" alt="Divider Image 2">
+                        <img src="../assets/devider_images/3.jpg" alt="Divider Image 3">
+                        <img src="../assets/devider_images/4.jpg" alt="Divider Image 4">
+                        <img src="../assets/devider_images/5.jpg" alt="Divider Image 5">
+                        <img src="../assets/devider_images/6.jpg" alt="Divider Image 6">
+                        <img src="../assets/devider_images/7.jpg" alt="Divider Image 7">
+                        <img src="../assets/devider_images/8.jpg" alt="Divider Image 8">
+                        <img src="../assets/devider_images/9.jpg" alt="Divider Image 9">
+                        <img src="../assets/devider_images/10.jpg" alt="Divider Image 10">
+                        <img src="../assets/devider_images/11.jpg" alt="Divider Image 11">
+                    </div>
+                    <button class="gallery-nav next-button">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                <div class="image-zoom-info">
+                    <span>Click to zoom</span>
+                </div>
+            </div>
+            
+            <!-- 右侧产品信息和缩略图区域 -->
             <div class="product-info-sticky">
                 <div class="product-info-content">
                     <h1 class="product-title">Chinese Antique Wooden Screen</h1>
                     <p class="product-period">Qing Dynasty, Late 19th Century</p>
-                    <div class="product-description">
-                        <p>This exquisite Chinese antique screen dates back to the late Qing Dynasty, circa 1880s. Meticulously handcrafted from premium rosewood, it exemplifies the perfect fusion of traditional craftsmanship and artistic excellence.</p>
-                        <p>The screen consists of six panels, each adorned with intricate relief carvings depicting traditional motifs of landscapes, birds, and flowers. The craftsmanship shows exceptional attention to detail, with fluid lines and rich textures.</p>
-                        
                     
+                    <!-- 缩略图区域 -->
+                    <div class="thumbnail-gallery">
+                        <div class="thumbnail active" data-index="0">
+                            <img src="../assets/devider_images/1.jpg" alt="Thumbnail 1">
+                        </div>
+                        <div class="thumbnail" data-index="1">
+                            <img src="../assets/devider_images/2.jpg" alt="Thumbnail 2">
+                        </div>
+                        <div class="thumbnail" data-index="2">
+                            <img src="../assets/devider_images/3.jpg" alt="Thumbnail 3">
+                        </div>
+                        <div class="thumbnail" data-index="3">
+                            <img src="../assets/devider_images/4.jpg" alt="Thumbnail 4">
+                        </div>
+                        <div class="thumbnail" data-index="4">
+                            <img src="../assets/devider_images/5.jpg" alt="Thumbnail 5">
+                        </div>
+                        <div class="thumbnail" data-index="5">
+                            <img src="../assets/devider_images/6.jpg" alt="Thumbnail 6">
+                        </div>
+                        <div class="thumbnail" data-index="6">
+                            <img src="../assets/devider_images/7.jpg" alt="Thumbnail 7">
+                        </div>
+                        <div class="thumbnail" data-index="7">
+                            <img src="../assets/devider_images/8.jpg" alt="Thumbnail 8">
+                        </div>
+                        <div class="thumbnail" data-index="8">
+                            <img src="../assets/devider_images/9.jpg" alt="Thumbnail 9">
+                        </div>
+                        <div class="thumbnail" data-index="9">
+                            <img src="../assets/devider_images/10.jpg" alt="Thumbnail 10">
+                        </div>
+                        <div class="thumbnail" data-index="10">
+                            <img src="../assets/devider_images/11.jpg" alt="Thumbnail 11">
+                        </div>
                     </div>
+                    
                     <div class="product-details">
                         <div class="detail-item">
                             <span class="detail-label">Dimensions:</span>
@@ -149,6 +188,7 @@
                             <span class="detail-value">Imperial Workshop, Beijing</span>
                         </div>
                     </div>
+
                     <div class="product-actions">
                         <a href="../contact.html" class="action-button">Inquire</a>
                         <button id="ar-button" class="action-button secondary">AR Viewing</button>
@@ -234,6 +274,6 @@
     </footer>
 
     <script src="../js/script.js"></script>
-    <script src="../js/product-detail.js"></script>
+    <script src="../js/product-detail.js?v=1.0.8"></script>
 </body>
 </html> 
