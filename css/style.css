@@ -1845,7 +1845,7 @@ main {
 .exhibitions-asymmetric {
     width: 100%;
     max-width: 100%; /* 改为100%，让图片与屏幕左侧对齐 */
-    margin: 100px 0 30px; /* 添加30px的下边距，减少与下方区域的间距 */
+    margin: -10px 0 40px; /* 修改顶部边距，让Current部分下移 */
     padding: 0; /* 移除所有内边距 */
     box-sizing: border-box;
 }
@@ -1854,6 +1854,9 @@ main {
     display: flex;
     margin-bottom: 50px; /* 调整为适中的间距 */
     height: 480px; /* 调整为适当的高度，避免内容过于拥挤 */
+    max-width: 85%; /* 设置最大宽度 */
+    margin-left: 7.5%; /* 左侧边距，确保对齐 */
+    margin-right: 7.5%; /* 右侧边距 */
 }
 
 /* u7b2cu4e00u884cu5e03u5c40 - u5de6u5927u56feu53f3u6587u5b57 */
@@ -2032,7 +2035,7 @@ main {
 .exhibitions-asymmetric {
     width: 100%;
     max-width: 100%; /* 改为100%，让图片与屏幕左侧对齐 */
-    margin: 80px 0 40px; /* 调整为适中的间距，避免过于拥挤 */
+    margin: -10px 0 40px; /* 修改顶部边距，让Current部分下移 */
     padding: 0; /* 移除所有内边距 */
     box-sizing: border-box;
 }
@@ -2129,7 +2132,7 @@ main {
 
 .new-arrivals-header h2 {
     font-family: var(--font-heading);
-    font-size: 1.6em; /* 减小字号使其更精致 */
+    font-size: 1.6em; /* 恢复原来的字号 */
     font-weight: 400;
     color: var(--brand-black);
     margin: 0;
@@ -2264,16 +2267,19 @@ main {
     padding-right: 0; /* 移除右内边距 */
 }
 
-/* 第二行：杭州店 - 左文右图，文字与图片左对齐 */
-.store-locations .second-row {
+/* 第二行：杭州店和展览 - 左文右图，文字与图片左对齐 */
+.store-locations .second-row,
+.exhibitions-asymmetric .second-row {
     flex-direction: row-reverse; /* 反向排列 */
 }
 
-.store-locations .second-row .exhibition-main-image {
+.store-locations .second-row .exhibition-main-image,
+.exhibitions-asymmetric .second-row .exhibition-main-image {
     flex: 0 0 70%; /* 增加图片区域宽度 */
 }
 
-.store-locations .second-row .exhibition-content {
+.store-locations .second-row .exhibition-content,
+.exhibitions-asymmetric .second-row .exhibition-content {
     flex: 0 0 30%; /* 减少文字区域宽度 */
     padding-right: 30px; /* 减少右内边距 */
     padding-left: 0; /* 移除左内边距 */
@@ -2281,33 +2287,59 @@ main {
     left: 3.5%; /* 向左移动文字区域 */
 }
 
-.store-locations .exhibition-title {
-    font-size: 1.8em; /* 减小标题字号 */
+/* 使展览页与首页门店展示区样式一致 */
+.store-locations .exhibition-title,
+.exhibitions-asymmetric .exhibition-title {
+    font-size: 1.8em;
     margin-bottom: 15px;
-    letter-spacing: 0.05em; /* 增加字母间距，更精致 */
+    letter-spacing: 0.05em;
     font-weight: 400;
 }
 
-.store-locations .store-address {
-    font-size: 0.95em; /* 减小地址字号 */
+.store-locations .store-address,
+.exhibitions-asymmetric .store-address {
+    font-size: 0.95em;
     font-family: var(--font-body);
     font-weight: 500;
     margin-bottom: 10px;
     color: var(--brand-green);
 }
 
-.store-locations .exhibition-date {
-    font-size: 0.9em; /* 减小时间字号 */
+.store-locations .exhibition-date,
+.exhibitions-asymmetric .exhibition-date {
+    font-size: 0.9em;
     font-weight: 400;
     margin-bottom: 20px;
     color: #666;
 }
 
-.store-locations .exhibition-description {
-    font-size: 0.9em; /* 减小描述字号 */
+.store-locations .exhibition-description,
+.exhibitions-asymmetric .exhibition-description {
+    font-size: 0.9em;
     line-height: 1.7;
     margin-bottom: 25px;
-    max-width: 90%; /* 限制文字宽度 */
+    max-width: 90%;
+}
+
+.store-locations .view-more-link,
+.exhibitions-asymmetric .view-more-link {
+    display: inline-block;
+    padding: 8px 25px;
+    border: 1px solid var(--brand-black);
+    background-color: transparent;
+    color: var(--brand-black);
+    font-family: var(--font-body);
+    font-size: 0.85em;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.store-locations .view-more-link:hover,
+.exhibitions-asymmetric .view-more-link:hover {
+    background-color: var(--brand-black);
+    color: white;
+    border-color: var(--brand-black);
 }
 
 /* 调整图片容器样式，确保图片完整显示 */
@@ -2722,17 +2754,22 @@ main {
 
 .footer-social {
     display: flex;
-    gap: 20px;
+    gap: 25px; /* 增加图标之间的间距 */
+    margin-top: 5px; /* 添加顶部边距 */
 }
 
 .footer-social a {
     color: var(--brand-black);
-    font-size: 1.1em;
-    transition: color 0.3s ease;
+    font-size: 1.4em; /* 增加图标尺寸 */
+    transition: color 0.3s ease, transform 0.3s ease; /* 添加变换过渡效果 */
+    display: flex; /* 使用flex布局使图标居中 */
+    align-items: center; /* 垂直居中 */
+    justify-content: center; /* 水平居中 */
 }
 
 .footer-social a:hover {
     color: var(--brand-red);
+    transform: scale(1.15); /* 悬停时图标略微放大 */
 }
 
 /* 页脚响应式样式 */
@@ -2762,5 +2799,406 @@ main {
     
     .footer-links-group {
         margin-bottom: 30px;
+    }
+}
+
+/* 展览页面样式 */
+.page-header {
+    padding: 45px 0 5px; /* 减少顶部内边距，将标题向上移动 */
+    text-align: left; /* 改为左对齐 */
+    background-color: var(--background-light);
+    max-width: 85%; /* 添加最大宽度 */
+    margin-left: 7.5%; /* 改为左对齐，不居中 */
+    margin-right: auto;
+    padding-left: 0; /* 移除左侧内边距 */
+}
+
+.page-title {
+    font-family: var(--font-heading);
+    font-size: 2em; /* 减小字号 */
+    font-weight: normal;
+    color: var(--brand-black);
+    letter-spacing: 2px;
+    margin-bottom: 0; /* 移除底部边距 */
+    text-align: left; /* 确保左对齐 */
+}
+
+/* Current展览部分的样式调整 */
+.exhibitions-asymmetric {
+    width: 100%;
+    max-width: 100%; /* 改为100%，让图片与屏幕左侧对齐 */
+    margin: -10px 0 40px; /* 修改顶部边距，让Current部分下移 */
+    padding: 0; /* 移除所有内边距 */
+    box-sizing: border-box;
+}
+
+.section-container {
+    position: relative;
+    width: 100%;
+    margin-bottom: 25px; /* 减少底部边距 */
+    max-width: 85%; /* 设置容器宽度 */
+    margin-left: 7.5%; /* 左侧边距，确保与图片左边缘对齐 */
+    margin-right: auto;
+    padding-right: 0; /* 移除右侧内边距 */
+}
+
+.exhibitions-asymmetric .section-heading {
+    text-align: left; /* 改为左对齐 */
+    margin-bottom: 30px; /* 减少底部边距 */
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-size: 1.2em;
+    letter-spacing: 2px;
+    position: relative; /* 为添加线条做准备 */
+    display: inline-block; /* 使宽度适应内容 */
+    padding-right: 30px; /* 为右侧线条留出空间 */
+}
+
+/* 添加CURRENT右侧的细线 */
+.exhibitions-asymmetric .section-heading::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: calc(100% + 20px); /* 从标题文本右侧开始 */
+    width: calc(85vw - 100% - 40px); /* 计算剩余宽度减去边距 */
+    height: 0.4px; /* 减小线条高度，使其更细 */
+    background-color: rgba(0, 0, 0, 0.3); /* 调整颜色，使其更淡 */
+    transform: translateY(-50%);
+}
+
+/* Past展览部分的样式调整 */
+.past-exhibitions-section {
+    margin-top: 120px; /* 增加顶部边距，向下移动 */
+    padding-top: 0; /* 减少顶部内边距 */
+    border-top: none; /* 移除上边框，消除多余细线 */
+    margin-left: 7.5%; /* 左侧边距，确保与图片左边缘对齐 */
+    margin-right: 7.5%;
+    background-color: transparent; /* 取消淡黄色背景 */
+    padding: 0; /* 移除内边距 */
+}
+
+/* 确保past部分的图片比例适中 */
+.past-exhibitions-section .product-image img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1/1; /* 方形图片 */
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+/* 确保产品信息与图片间隔合适 */
+.past-exhibitions-section .product-info {
+    padding: 0;
+    margin-top: -5px; /* 使用负的外边距而不是负的内边距 */
+    text-align: left;
+}
+
+.past-exhibitions-section .product-title {
+    font-size: 1em;
+    margin-bottom: 5px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+}
+
+.past-exhibitions-section .product-period {
+    font-size: 0.85em;
+    color: var(--brand-green);
+    margin-bottom: 5px;
+}
+
+.past-exhibitions-section .exhibition-date {
+    font-size: 0.85em;
+    color: #666;
+    margin-top: 5px;
+}
+
+/* 添加新的标题容器，与Current部分保持一致 */
+.past-exhibitions-section .section-container {
+    position: relative;
+    width: 100%;
+    margin-bottom: 25px; /* 减少底部边距 */
+    max-width: 100%; /* 设置容器宽度 */
+    margin-left: 0; /* 左侧边距 */
+    margin-right: auto;
+    padding-right: 0; /* 移除右侧内边距 */
+}
+
+.past-exhibitions-section .section-heading {
+    text-align: left; /* 改为左对齐 */
+    margin-bottom: 30px; /* 减少底部边距 */
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-size: 1.2em;
+    letter-spacing: 2px;
+    position: relative; /* 为添加线条做准备 */
+    display: inline-block; /* 使宽度适应内容 */
+    padding-right: 30px; /* 为右侧线条留出空间 */
+}
+
+/* 添加PAST右侧的细线，与CURRENT风格保持一致 */
+.past-exhibitions-section .section-heading::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: calc(100% + 20px); /* 从标题文本右侧开始 */
+    width: calc(85vw - 100% - 40px); /* 计算剩余宽度减去边距 */
+    height: 0.4px; /* 减小线条高度，使其更细 */
+    background-color: rgba(0, 0, 0, 0.3); /* 调整颜色，使其更淡 */
+    transform: translateY(-50%);
+}
+
+/* 调整网格布局，显示4个一排 */
+.past-exhibitions-section .new-arrivals-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4列布局 */
+    gap: 30px;
+    margin-top: 20px;
+}
+
+/* Past部分的悬停效果 */
+.past-exhibitions-section .product-item {
+    transition: transform 0.3s ease;
+}
+
+.past-exhibitions-section .product-item:hover {
+    transform: translateY(-5px);
+}
+
+.past-exhibitions-section .product-image {
+    overflow: hidden;
+    position: relative;
+}
+
+.past-exhibitions-section .product-link:hover .product-image img {
+    transform: scale(1.05);
+}
+
+.past-exhibitions-section .product-link:hover .product-title {
+    color: var(--brand-red);
+}
+
+/* 确保响应式布局 */
+@media (max-width: 1200px) {
+    .past-exhibitions-section .new-arrivals-grid {
+        grid-template-columns: repeat(3, 1fr); /* 宽度变小时改为3列 */
+    }
+}
+
+@media (max-width: 768px) {
+    .past-exhibitions-section .new-arrivals-grid {
+        grid-template-columns: repeat(2, 1fr); /* 平板尺寸改为2列 */
+    }
+    
+    .page-header {
+        padding: 100px 0 40px;
+    }
+    
+    .page-title {
+        font-size: 2.2em;
+    }
+    
+    .past-exhibitions-section {
+        margin-top: 60px;
+    }
+}
+
+@media (max-width: 480px) {
+    .past-exhibitions-section .new-arrivals-grid {
+        grid-template-columns: 1fr; /* 手机尺寸改为单列 */
+    }
+    
+    .page-header {
+        padding: 80px 0 30px;
+    }
+    
+    .page-title {
+        font-size: 1.8em;
+    }
+}
+
+/* Past部分的产品项目添加动画效果 */
+.past-exhibitions-section .product-item {
+    transition: transform 0.3s ease;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1), 
+                transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.past-exhibitions-section .product-item.animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 为产品项目添加不同的动画延迟，创造错落感 */
+.past-exhibitions-section .product-item:nth-child(1) { transition-delay: 0.05s; }
+.past-exhibitions-section .product-item:nth-child(2) { transition-delay: 0.1s; }
+.past-exhibitions-section .product-item:nth-child(3) { transition-delay: 0.15s; }
+.past-exhibitions-section .product-item:nth-child(4) { transition-delay: 0.2s; }
+.past-exhibitions-section .product-item:nth-child(5) { transition-delay: 0.25s; }
+.past-exhibitions-section .product-item:nth-child(6) { transition-delay: 0.3s; }
+.past-exhibitions-section .product-item:nth-child(7) { transition-delay: 0.35s; }
+.past-exhibitions-section .product-item:nth-child(8) { transition-delay: 0.4s; }
+
+/* 产品标题、期间和日期的动画效果 */
+.past-exhibitions-section .product-title,
+.past-exhibitions-section .product-period,
+.past-exhibitions-section .exhibition-date {
+    opacity: 0;
+    transform: translateY(10px); /* 减小位移幅度，避免影响布局 */
+    transition: opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1), 
+                transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+    margin-top: 0; /* 确保没有额外的边距 */
+    margin-bottom: 3px; /* 减小元素之间的间距 */
+}
+
+.past-exhibitions-section .product-title.animated,
+.past-exhibitions-section .product-period.animated,
+.past-exhibitions-section .exhibition-date.animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 为产品信息添加不同的动画延迟 */
+.past-exhibitions-section .product-title { transition-delay: 0.1s; }
+.past-exhibitions-section .product-period { transition-delay: 0.15s; }
+.past-exhibitions-section .exhibition-date { transition-delay: 0.2s; }
+
+/* 确保产品标题的样式 */
+.past-exhibitions-section .product-title {
+    font-size: 1em;
+    margin-bottom: 3px;
+    margin-top: 0;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+}
+
+/* 确保产品期间的样式 */
+.past-exhibitions-section .product-period {
+    font-size: 0.85em;
+    color: var(--brand-green);
+    margin-bottom: 3px;
+    margin-top: 0;
+}
+
+/* 确保展览日期的样式 */
+.past-exhibitions-section .exhibition-date {
+    font-size: 0.85em;
+    color: #666;
+    margin-top: 2px;
+    margin-bottom: 0;
+}
+
+/* 视频背景区域样式 */
+.video-background-section {
+    width: 100%;
+    height: 100vh; /* 全屏高度 */
+    position: relative;
+    overflow: hidden;
+    margin: 80px 0; /* 上下边距 */
+}
+
+.video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 视频覆盖整个区域 */
+    z-index: 1;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3); /* 半透明黑色遮罩 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    z-index: 2;
+}
+
+.video-content {
+    max-width: 80%;
+}
+
+.video-title {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    margin-bottom: 25px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.video-description {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    margin-bottom: 35px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.video-button {
+    display: inline-block;
+    padding: 12px 35px;
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.video-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: white;
+    transition: width 0.3s ease;
+    z-index: -1;
+}
+
+.video-button:hover {
+    color: black;
+}
+
+.video-button:hover::before {
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .video-title {
+        font-size: 2.2rem;
+    }
+    
+    .video-description {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .video-title {
+        font-size: 1.8rem;
+    }
+    
+    .video-button {
+        padding: 10px 25px;
+        font-size: 0.9rem;
     }
 }

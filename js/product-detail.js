@@ -1,6 +1,10 @@
-// 产品详情页脚本 - 简化版
+// 产品详情页脚本 - 简化版 - v1.0.9
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('产品详情页脚本加载');
+    console.log('产品详情页脚本加载 v1.0.9');
+    
+    // 获取图片数量
+    const mainImages = document.querySelectorAll('.main-image img');
+    console.log('检测到图片数量：', mainImages.length);
     
     // 图片轮播功能
     setupGallery();
@@ -50,7 +54,7 @@ function setupGallery() {
         // 移除所有active类
         mainImages.forEach(img => img.classList.remove('active'));
         thumbnails.forEach(thumb => thumb.classList.remove('active'));
-        
+    
         // 添加active类到当前图片
         mainImages[index].classList.add('active');
         
@@ -122,7 +126,7 @@ function setupGallery() {
                 justify-content: center;
                 align-items: center;
             `;
-            
+        
             // 创建所有大图，但只显示当前的
             const fullscreenImages = [];
             mainImages.forEach((mainImg, idx) => {
@@ -360,15 +364,15 @@ function setupAR() {
     const arButton = document.getElementById('ar-button');
     const qrModal = document.getElementById('qr-modal');
     const closeBtn = document.querySelector('.qr-close');
-    
+
     if (!arButton || !qrModal || !closeBtn) return;
     
     // 打开模态框
     arButton.onclick = function() {
-        qrModal.style.display = 'block';
+            qrModal.style.display = 'block';
         setTimeout(() => qrModal.classList.add('show'), 10);
     };
-    
+
     // 关闭模态框
     closeBtn.onclick = function() {
         qrModal.classList.remove('show');
@@ -380,6 +384,6 @@ function setupAR() {
         if (e.target === qrModal) {
             qrModal.classList.remove('show');
             setTimeout(() => qrModal.style.display = 'none', 300);
-        }
+            }
     };
 } 

@@ -251,7 +251,14 @@ document.addEventListener('DOMContentLoaded', function() {
         '.exhibition-content, ' + 
         '.about-us-title, ' + 
         '.about-us-content p, ' +
-        '.about-logo'
+        '.about-logo, ' +
+        '.past-exhibitions-section .product-item, ' +
+        '.past-exhibitions-section .product-title, ' +
+        '.past-exhibitions-section .product-period, ' +
+        '.past-exhibitions-section .exhibition-date, ' +
+        '.video-title, ' +
+        '.video-description, ' +
+        '.video-button'
     );
 
     console.log('Found ' + animatedElements.length + ' animated elements'); // 调试使用
@@ -345,7 +352,7 @@ function preloadHoverImages() {
     } else {
         console.log('No hover images found for preloading');
     }
-}
+} 
 
 // 轮播图自动切换功能
 document.addEventListener('DOMContentLoaded', function() {

@@ -186,9 +186,8 @@
 
 /* 缩略图画廊 */
 .thumbnail-gallery {
-    display: grid;
-    grid-template-columns: repeat(8, 1fr); /* 每排8个缩略图 */
-    gap: 10px; /* 进一步减小间距 */
+    display: flex;
+    gap: 8px; /* 减小间距 */
     margin: 15px 0 25px;
 }
 
@@ -198,8 +197,8 @@
     cursor: pointer;
     border: 1px solid transparent;
     transition: all 0.3s ease;
-    max-width: 75px; /* 增大缩略图尺寸 */
-    max-height: 100px;
+    max-width: 85px;
+    max-height: 115px;
 }
 
 .thumbnail.active {
@@ -225,7 +224,7 @@
 .product-actions {
     display: flex;
     gap: 15px;
-    margin-top: 140px;
+    margin-top: 20px;
 }
 
 .action-button {
