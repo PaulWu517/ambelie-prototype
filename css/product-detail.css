@@ -3,7 +3,7 @@
 /* 主容器 */
 .product-detail-container {
     display: flex;
-    margin-top: 100px; /* 增加顶部外边距，与页眉保持距离 */
+    margin-top: 0px; /* 增加顶部外边距，与页眉保持距离 */
     min-height: calc(100vh - 120px); /* 调整最小高度 */
     position: relative;
     padding: 0 5%; /* 使用padding创建侧边距 */

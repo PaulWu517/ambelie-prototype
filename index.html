@@ -30,7 +30,7 @@
         <nav class="main-navigation right-navigation">
             <ul>
                 <li class="menu-item">
-                    <a href="services.html">SERVICES</a>
+                    <a href="projects.html">PROJECTS</a>
                 </li>
                 <li class="menu-item">
                     <a href="about.html">ABOUT</a>
@@ -68,9 +68,32 @@
     <div class="mega-menu-container">
         <!-- COLLECTION菜单 -->
         <div class="mega-menu active" id="collection-menu">
+            <!-- 添加一级菜单导航 -->
+            <div class="primary-categories">
+                <ul>
+                    <li class="primary-category" data-category="asian-art">Asian art</li>
+                    <li class="primary-category" data-category="antique">Antique</li>
+                    <li class="primary-category" data-category="vintage">Vintage</li>
+                    <li class="primary-category" data-category="designers">Designers</li>
+                    <li class="primary-category" data-category="fashion">Fashion</li>
+                    <li class="primary-category" data-category="brands">Cooperative Brands</li>
+                </ul>
+            </div>
             <div class="mega-menu-content">
-                <div class="menu-section">
-                    <h2>Chinoiserie</h2>
+                <!-- 二级菜单内容区域 - 默认不显示任何二级菜单 -->
+                <div class="menu-section" data-section="asian-art">
+                    <ul class="menu-links">
+                        <li><a href="category/dividers.html">Dividers</a></li>
+                        <li><a href="category/chairs.html">Chairs</a></li>
+                        <li><a href="category/embroidery.html">Embroidery</a></li>
+                        <li><a href="category/coffee-tables.html">Coffee tables</a></li>
+                        <li><a href="category/tables.html">Tables</a></li>
+                        <li><a href="category/cabinets.html">Cabinets</a></li>
+                        <li><a href="category/lighting.html">Lighting</a></li>
+                        <li><a href="category/others.html">Others</a></li>
+                    </ul>
+                </div>
+                <div class="menu-section" data-section="antique">
                     <ul class="menu-links">
                         <li><a href="category/dividers.html">Dividers</a></li>
                         <li><a href="category/chairs.html">Chairs</a></li>
@@ -82,8 +105,7 @@
                         <li><a href="category/others.html">Others</a></li>
                     </ul>
                 </div>
-                <div class="menu-section">
-                    <h2>Antique</h2>
+                <div class="menu-section" data-section="designers">
                     <ul class="menu-links">
                         <li><a href="category/dividers.html">Dividers</a></li>
                         <li><a href="category/chairs.html">Chairs</a></li>
@@ -95,8 +117,7 @@
                         <li><a href="category/others.html">Others</a></li>
                     </ul>
                 </div>
-                <div class="menu-section">
-                    <h2>Vintage</h2>
+                <div class="menu-section" data-section="vintage">
                     <ul class="menu-links">
                         <li><a href="category/dividers.html">Dividers</a></li>
                         <li><a href="category/chairs.html">Chairs</a></li>
@@ -108,8 +129,7 @@
                         <li><a href="category/others.html">Others</a></li>
                     </ul>
                 </div>
-                <div class="menu-section">
-                    <h2>Fashion</h2>
+                <div class="menu-section" data-section="fashion">
                     <ul class="menu-links">
                         <li><a href="category/rent.html">Rent</a></li>
                         <li><a href="category/bottom.html">Bottom</a></li>
@@ -123,8 +143,7 @@
                         <li><a href="category/suit.html">Suit</a></li>
                     </ul>
                 </div>
-                <div class="menu-section">
-                    <h2>Cooperative Brands</h2>
+                <div class="menu-section" data-section="brands">
                     <ul class="menu-links">
                         <li><a href="category/yamagiwa.html">Yamagiwa</a></li>
                         <li><a href="category/fortuny.html">Fortuny</a></li>
@@ -140,12 +159,21 @@
     </div>
 
     <main>
-        <section class="hero-section">
-            <!-- 轮播图区域 -->
-            <div class="hero-slider">
-                <div class="hero-slide active" style="background-image: url('assets/images/placeholder-hero.jpg')"></div>
-                <div class="hero-slide" style="background-image: url('assets/images/placeholder-hero1.jpg')"></div>
-                <div class="hero-slide" style="background-image: url('assets/images/placeholder-hero2.jpg')"></div>
+        <!-- Video Background Section 作为首图区域 -->
+        <section class="video-background-section">
+            <video class="video-background" autoplay loop muted playsinline>
+                <source src="assets/video/WeChat_20250519180532.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="video-overlay">
+                <div class="video-content">
+                    <div class="seal-logo">
+                        <img src="assets/images/seal_logo.png" alt="Ambelie Seal">
+                    </div>
+                    <h2 class="video-title">THE FUSION OF ART AND LIFE</h2>
+                    <p class="video-description">Discover the unique blend of art, culture, and timeless design.</p>
+                    <a href="about.html" class="video-button">Learn More</a>
+                </div>
             </div>
         </section>
 
@@ -207,66 +235,11 @@
             </div>
         </section>
 
-        <!-- 全屏展览区 -->
+        <!-- 保留原有全屏展览区 -->
         <section class="fullscreen-exhibition">
             <div class="exhibition-overlay">
                 <h2 class="exhibition-slogan">CROSSING THE RIVER OF TIME</h2>
                 <a href="exhibitions.html" class="exhibition-button">Explore More</a>
-            </div>
-        </section>
-
-        <!-- 门店预约区域 -->
-        <section class="exhibitions-asymmetric store-locations">
-            <!-- 第一行：左大图 + 右侧文字 - 上海店 -->
-            <div class="exhibitions-row first-row">
-                <div class="exhibition-main-image">
-                    <div class="exhibition-image-container">
-                        <img src="assets/images/Shanghai-Store.jpg" alt="AMBELIE Gallery Shanghai">
-                    </div>
-                </div>
-                <div class="exhibition-content">
-                    <div class="exhibition-text">
-                        <h2 class="exhibition-title">AMBELIE SHANGHAI</h2>
-                        <p class="store-address">No. 21 Kangping Road, Xuhui District, Shanghai</p>
-                        <p class="exhibition-date">Opening Hours: 10:00 - 20:00</p>
-                        <p class="exhibition-description">AMBELIE has returned to Shanghai, nestled in a serene garden villa at Kangping Road. Our treasured collection has found its roots in this three-story garden house built in 1945, surrounded by swaying shadows and lush greenery.</p>
-                        <a href="reservation.html" class="view-more-link">Visit Store</a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- 第二行：左文右图 - 杭州店 -->
-            <div class="exhibitions-row second-row">
-                <div class="exhibition-main-image">
-                    <div class="exhibition-image-container">
-                        <img src="assets/images/Hangzhou-Store.jpg" alt="AMBELIE Gallery Hangzhou">
-                    </div>
-                </div>
-                <div class="exhibition-content">
-                    <div class="exhibition-text">
-                        <h2 class="exhibition-title">AMBELIE HANGZHOU</h2>
-                        <p class="store-address">By Appointment</p>
-                        <p class="exhibition-date">Opening Hours: 10:00 - 20:00</p>
-                        <p class="exhibition-description">We've brought treasures from around the world to our Hangzhou space. This street once sheltered the renowned artist Mei Lanfang and was home to "Huang Garden." The refined aesthetic exists quietly here, immersed in a sense of history and culture.</p>
-                        <a href="reservation.html" class="view-more-link">Visit Store</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Video Background Section -->
-        <section class="video-background-section">
-            <video class="video-background" autoplay loop muted playsinline>
-                <source src="assets/video/WeChat_20250519180532.mp4" type="video/mp4">
-                <!-- Fallback text if video cannot be loaded -->
-                Your browser does not support the video tag.
-            </video>
-            <div class="video-overlay">
-                <div class="video-content">
-                    <h2 class="video-title">THE FUSION OF ART AND LIFE</h2>
-                    <p class="video-description">From Europe to Asia, from classical to modern, AMBELIE is dedicated to bringing you an artistic space experience that integrates diverse cultures and aesthetics, making antique furniture an art piece in your life.</p>
-                    <a href="about.html" class="video-button">Learn More</a>
-                </div>
             </div>
         </section>
 
@@ -356,6 +329,54 @@
             </div>
         </section>
 
+        <!-- 新增全屏图片文案区，放在产品分类区和门店区之间，背景图片为placeholder-hero.jpg -->
+        <section class="fullscreen-exhibition" style="background-image: url('assets/images/placeholder-hero.jpg'); background-size: cover; background-position: center;">
+            <div class="exhibition-overlay">
+                <h2 class="exhibition-slogan">THE FUSION OF ART AND LIFE</h2>
+                <p class="video-description">From Europe to Asia, from classical to modern, AMBELIE is dedicated to bringing you an artistic space experience that integrates diverse cultures and aesthetics, making antique furniture an art piece in your life.</p>
+                <a href="about.html" class="exhibition-button">Learn More</a>
+            </div>
+        </section>
+
+        <!-- 门店预约区域 -->
+        <section class="exhibitions-asymmetric store-locations">
+            <!-- 第一行：左大图 + 右侧文字 - 上海店 -->
+            <div class="exhibitions-row first-row">
+                <div class="exhibition-main-image">
+                    <div class="exhibition-image-container">
+                        <img src="assets/images/Shanghai-Store.jpg" alt="AMBELIE Gallery Shanghai">
+                    </div>
+                </div>
+                <div class="exhibition-content">
+                    <div class="exhibition-text">
+                        <h2 class="exhibition-title">AMBELIE SHANGHAI</h2>
+                        <p class="store-address">No. 21 Kangping Road, Xuhui District, Shanghai</p>
+                        <p class="exhibition-date">Opening Hours: 10:00 - 20:00</p>
+                        <p class="exhibition-description">AMBELIE has returned to Shanghai, nestled in a serene garden villa at Kangping Road. Our treasured collection has found its roots in this three-story garden house built in 1945, surrounded by swaying shadows and lush greenery.</p>
+                        <a href="reservation.html" class="view-more-link">Visit Store</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 第二行：左文右图 - 杭州店 -->
+            <div class="exhibitions-row second-row">
+                <div class="exhibition-main-image">
+                    <div class="exhibition-image-container">
+                        <img src="assets/images/Hangzhou-Store.jpg" alt="AMBELIE Gallery Hangzhou">
+                    </div>
+                </div>
+                <div class="exhibition-content">
+                    <div class="exhibition-text">
+                        <h2 class="exhibition-title">AMBELIE HANGZHOU</h2>
+                        <p class="store-address">By Appointment</p>
+                        <p class="exhibition-date">Opening Hours: 10:00 - 20:00</p>
+                        <p class="exhibition-description">We've brought treasures from around the world to our Hangzhou space. This street once sheltered the renowned artist Mei Lanfang and was home to "Huang Garden." The refined aesthetic exists quietly here, immersed in a sense of history and culture.</p>
+                        <a href="reservation.html" class="view-more-link">Visit Store</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- About Us Section -->
         <section class="about-us-section">
             <div class="about-us-inner">
@@ -393,22 +414,19 @@
             
             <div class="footer-center">
                 <div class="footer-links-group">
-                    <h3>CONTACT</h3>
-                    <ul>
-                        <li><a href="contact.html">CONTACT</a></li>
-                        <li><a href="support.html">SUPPORT</a></li>
-                        <li><a href="careers.html">CAREERS</a></li>
-                        <li><a href="accessibility.html">ACCESSIBILITY</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-links-group">
                     <h3>EXPLORE</h3>
                     <ul>
-                        <li><a href="category/all.html">COLLECTIONS</a></li>
-                        <li><a href="registry.html">REGISTRY</a></li>
-                        <li><a href="trade.html">TRADE</a></li>
-                        <li><a href="press.html">PRESS</a></li>
+                        <li><a href="category/all.html">COLLECTION</a></li>
+                        <li><a href="exhibitions.html">EXHIBITION</a></li>
+                        <li><a href="event.html">EVENT</a></li>
+                        <li><a href="projects.html">PROJECTS</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links-group">
+                    <h3>SERVICES</h3>
+                    <ul>
+                        <li><a href="about.html">ABOUT</a></li>
+                        <li><a href="contact.html">CONTACT</a></li>
                     </ul>
                 </div>
             </div>
@@ -419,8 +437,8 @@
                     <button type="submit">SUBMIT</button>
                 </div>
                 <div class="footer-social">
-                    <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
                     <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="小红书" title="小红书官方账号"><img src="assets/vi/小红书-copy.png" alt="小红书" class="xiaohongshu-logo"></a>
                     <a href="#" aria-label="WeChat" title="请扫描二维码关注我们"><i class="fab fa-weixin"></i></a>
                     <a href="#" aria-label="Weibo"><i class="fab fa-weibo"></i></a>
                 </div>
@@ -435,4 +453,4 @@
         <!-- Images will be preloaded via CSS background properties -->
     </div>
 </body>
-</html> 
+</html>
